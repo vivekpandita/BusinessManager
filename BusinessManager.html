@@ -1,0 +1,4293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kashmir Crafts - Premium Kashmiri Products</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background: linear-gradient(135deg, #f0f4ff 0%, #f5f0ff 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 35px 30px;
+            text-align: center;
+            border-bottom: none;
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .header p {
+            font-size: 1em;
+            opacity: 0.9;
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 400;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #e8e5f5;
+            background: #f8f7fc;
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 16px 20px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: 500;
+            color: #666;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab-button:hover {
+            color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .tab-button.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+            font-weight: 600;
+        }
+
+        .content {
+            padding: 30px;
+            background: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #667eea;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            color: #333;
+            font-size: 0.95em;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 0.95em;
+            background: #fafbff;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            background: white;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: 500;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-success {
+            background: #51cf66;
+            color: white;
+            font-weight: 500;
+            border: none;
+        }
+
+        .btn-success:hover {
+            background: #40c057;
+        }
+
+        .btn-warning {
+            background: #ffd43b;
+            color: #333;
+            font-weight: 500;
+            border: none;
+        }
+
+        .btn-warning:hover {
+            background: #fcc419;
+        }
+
+        .btn-danger {
+            background: #ff6b6b;
+            color: white;
+            font-weight: 500;
+            border: none;
+        }
+
+        .btn-danger:hover {
+            background: #ff5252;
+        }
+
+        .btn-secondary {
+            background: #adb5bd;
+            color: white;
+            font-weight: 500;
+            border: none;
+        }
+
+        .btn-secondary:hover {
+            background: #999;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        thead {
+            background: #f8f9fa;
+        }
+
+        th {
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #667eea;
+            color: #667eea;
+            background: #f8f7fc;
+            font-size: 0.9em;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e8e5f5;
+            color: #333;
+            font-size: 0.95em;
+        }
+
+        tr:hover {
+            background: #f8f7fc;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+            text-align: center;
+        }
+
+        .card h3 {
+            font-size: 0.85em;
+            opacity: 0.9;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .card .value {
+            font-size: 2em;
+            font-weight: 700;
+            color: white;
+        }
+
+        .card.success {
+            background: linear-gradient(135deg, #51cf66 0%, #40c057 100%);
+            box-shadow: 0 4px 15px rgba(81, 207, 102, 0.2);
+        }
+
+        .card.warning {
+            background: linear-gradient(135deg, #ffd43b 0%, #fcc419 100%);
+            color: #333;
+            box-shadow: 0 4px 15px rgba(255, 212, 59, 0.2);
+        }
+
+        .card.warning h3 {
+            opacity: 0.8;
+        }
+
+        .card.warning .value {
+            color: #333;
+        }
+
+        .card.danger {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.2);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+
+        .badge-success {
+            background: #d3f9d8;
+            color: #2f9e44;
+        }
+
+        .badge-warning {
+            background: #fff3bf;
+            color: #cc5200;
+        }
+
+        .badge-danger {
+            background: #ffe0e0;
+            color: #c92a2a;
+        }
+
+        .badge-primary {
+            background: #d0ebff;
+            color: #1971c2;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        #confirmationModal {
+            z-index: 2000;
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .modal-header {
+            font-size: 1.4em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: #999;
+            padding: 0;
+            width: auto;
+        }
+
+        .close-modal:hover {
+            color: #333;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-buttons button {
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            background: white;
+            color: #666;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .filter-buttons button.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .filter-buttons button:hover {
+            border-color: #667eea;
+            color: #667eea;
+        }
+
+        .success-message {
+            background: #d3f9d8;
+            color: #2f9e44;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .error-message {
+            background: #ffe0e0;
+            color: #c92a2a;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .order-items {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f7fc;
+            border: 1px solid #e8e5f5;
+            border-radius: 5px;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .order-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-details {
+            flex: 1;
+        }
+
+        .item-details p {
+            margin: 5px 0;
+            font-size: 0.95em;
+        }
+
+        .item-price {
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        .toast {
+            background: white;
+            padding: 16px 20px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            min-width: 300px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            pointer-events: auto;
+            animation: slideIn 0.3s ease;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s ease-out;
+        }
+
+        .splash-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .splash-content {
+            text-align: center;
+            color: white;
+            animation: splashFadeIn 0.6s ease-out;
+        }
+
+        @keyframes splashFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .splash-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            animation: splashBounce 1s ease-in-out infinite;
+        }
+
+        @keyframes splashBounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .splash-title {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            letter-spacing: 1px;
+        }
+
+        .splash-subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin: 0 0 30px 0;
+            letter-spacing: 0.5px;
+        }
+
+        .splash-loader {
+            width: 60px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .splash-bar {
+            height: 100%;
+            background: white;
+            border-radius: 4px;
+            animation: splashLoad 1.5s ease-in-out;
+        }
+
+        @keyframes splashLoad {
+            0% {
+                width: 0%;
+            }
+            50% {
+                width: 100%;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 8000;
+        }
+
+        .loading-overlay.show {
+            display: flex;
+        }
+
+        /* Dark Mode */
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-tertiary: #f8f7fc;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666;
+            --border-color: #ddd;
+            --card-bg: #ffffff;
+        }
+
+        body.dark-mode {
+            --bg-primary: #1e1e1e;
+            --bg-secondary: #2d2d2d;
+            --bg-tertiary: #3a3a3a;
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --border-color: #444;
+            --card-bg: #2d2d2d;
+        }
+
+        body.dark-mode {
+            background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
+        }
+
+        body.dark-mode .container {
+            background: var(--bg-primary);
+        }
+
+        body.dark-mode .header {
+            background: linear-gradient(135deg, #2d2d2d 0%, #1e1e1e 100%);
+        }
+
+        body.dark-mode .tabs {
+            background: var(--bg-secondary);
+            border-bottom-color: var(--border-color);
+        }
+
+        body.dark-mode .tab-button {
+            color: var(--text-secondary);
+        }
+
+        body.dark-mode .tab-button.active {
+            color: #667eea;
+        }
+
+        body.dark-mode .content {
+            background: var(--bg-primary);
+        }
+
+        body.dark-mode .section {
+            background: var(--bg-secondary);
+            border-color: var(--border-color);
+        }
+
+        body.dark-mode .section-title {
+            color: var(--text-primary);
+        }
+
+        body.dark-mode .form-group label {
+            color: var(--text-primary);
+        }
+
+        body.dark-mode .form-group input,
+        body.dark-mode select {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border-color: var(--border-color);
+        }
+
+        body.dark-mode table {
+            background: var(--card-bg);
+        }
+
+        body.dark-mode th {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border-color: var(--border-color);
+        }
+
+        body.dark-mode td {
+            color: var(--text-primary);
+            border-color: var(--border-color);
+        }
+
+        body.dark-mode tr:hover {
+            background: var(--bg-secondary);
+        }
+
+        body.dark-mode .card {
+            background: linear-gradient(135deg, #3a3a3a 0%, #2d2d2d 100%);
+            color: var(--text-primary);
+        }
+
+        body.dark-mode .card h3 {
+            color: var(--text-primary);
+        }
+
+        body.dark-mode .card .value {
+            color: var(--text-primary);
+        }
+
+        body.dark-mode .card.warning {
+            background: linear-gradient(135deg, #4a4520 0%, #5a5530 100%);
+            color: var(--text-primary);
+        }
+
+        body.dark-mode .card.warning h3 {
+            color: var(--text-primary);
+        }
+
+        body.dark-mode .card.warning .value {
+            color: var(--text-primary);
+        }
+
+        body.dark-mode .card.success {
+            background: linear-gradient(135deg, #2d5a2d 0%, #3d6a3d 100%);
+            color: var(--text-primary);
+        }
+
+        body.dark-mode .card.success h3,
+        body.dark-mode .card.success .value {
+            color: var(--text-primary);
+        }
+
+        body.dark-mode .badge-success {
+            background: #1f4620;
+            color: #51cf66;
+        }
+
+        body.dark-mode .badge-warning {
+            background: #4a4520;
+            color: #ffd43b;
+        }
+
+        body.dark-mode .badge-danger {
+            background: #5a2a2a;
+            color: #ff8787;
+        }
+
+        body.dark-mode .badge-primary {
+            background: #2a4a6a;
+            color: #74c0fc;
+        }
+
+        body.dark-mode .modal-content {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        body.dark-mode .modal-header {
+            color: var(--text-primary);
+            border-bottom-color: var(--border-color);
+        }
+
+        body.dark-mode #modalBody {
+            color: var(--text-primary);
+        }
+
+        body.dark-mode #modalBody p {
+            color: var(--text-primary);
+        }
+
+        body.dark-mode #modalBody h3,
+        body.dark-mode #modalBody h4 {
+            color: var(--text-primary);
+        }
+
+        body.dark-mode #modalBody > div {
+            background: var(--bg-secondary) !important;
+            border-color: var(--border-color) !important;
+        }
+
+        body.dark-mode #modalBody > div > p {
+            color: var(--text-primary);
+        }
+
+        body.dark-mode .order-item p {
+            color: var(--text-primary);
+        }
+
+        body.dark-mode .order-item p[style*="color: #666"] {
+            color: var(--text-secondary) !important;
+        }
+
+        body.dark-mode .toast {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        body.dark-mode p {
+            color: var(--text-primary);
+        }
+
+        body.dark-mode h4 {
+            color: var(--text-primary) !important;
+        }
+
+        body.dark-mode button {
+            color: inherit;
+        }
+
+        body.dark-mode .order-item {
+            color: var(--text-primary);
+        }
+
+        body.dark-mode .order-items {
+            color: var(--text-primary);
+        }
+
+        body.dark-mode #invoiceContent {
+            background: var(--bg-secondary) !important;
+            color: var(--text-primary) !important;
+        }
+
+        body.dark-mode .dropdown-list {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        body.dark-mode .form-group input {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border-color: var(--border-color);
+        }
+
+        body.dark-mode .form-group label {
+            color: var(--text-primary);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .toast.success {
+            background: #d3f9d8;
+            color: #2f9e44;
+            border-left: 4px solid #2f9e44;
+        }
+
+        .toast.error {
+            background: #ffe0e0;
+            color: #c92a2a;
+            border-left: 4px solid #c92a2a;
+        }
+
+        .toast.info {
+            background: #d0ebff;
+            color: #1971c2;
+            border-left: 4px solid #1971c2;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .tabs {
+                flex-wrap: wrap;
+            }
+
+            .tab-button {
+                flex: 1 1 50%;
+            }
+
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .toast {
+                min-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Splash Screen -->
+    <div id="splashScreen" class="splash-screen">
+        <div class="splash-content">
+            <div class="splash-icon" id="splashIcon">🏺</div>
+            <h1 class="splash-title" id="splashTitle">Kashmir Crafts</h1>
+            <p class="splash-subtitle" id="splashSubtitle">Business Manager</p>
+            <div class="splash-loader">
+                <div class="splash-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="flex: 1;"></div>
+                <div style="text-align: center; flex: 1; cursor: pointer;" onclick="showBusinessSetupModal()">
+                    <h1 style="margin: 0 0 8px 0;"><span id="businessIcon">🏺</span> <span id="businessName">Kashmir Crafts</span></h1>
+                    <p style="margin: 0;" id="businessDescription">Premium Kashmiri Walnuts, Almonds & Handmade Dresses</p>
+                </div>
+                <div style="flex: 1; text-align: right;">
+                    <button onclick="toggleDarkMode()" style="background: none; border: none; color: white; font-size: 1.2em; cursor: pointer; padding: 5px 10px;">
+                        <span id="themeIcon">🌙</span>
+                    </button>
+                </div>
+            </div>
+            <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.3); font-size: 0.9em; opacity: 0.85; cursor: pointer;" onclick="showOwnerModal()">
+                👤 <span id="ownerDisplayName">Business Owner</span>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="switchTab('dashboard')">Dashboard</button>
+            <button class="tab-button" onclick="switchTab('orders')">Orders</button>
+            <button class="tab-button" onclick="switchTab('order-book')">Book Order</button>
+            <button class="tab-button" onclick="switchTab('products')">Products</button>
+            <button class="tab-button" onclick="switchTab('customers')">👥 Customers</button>
+            <button class="tab-button" onclick="switchTab('financial')">💰 Financial Summary</button>
+        </div>
+
+        <div class="content">
+            <!-- Dashboard Tab -->
+            <div id="dashboard" class="tab-content active">
+                <div class="section">
+                    <h2 class="section-title">Order Summary</h2>
+                    <div class="dashboard" id="dashboardCards">
+                        <div class="card warning">
+                            <h3>Open Orders</h3>
+                            <div class="value" id="openOrders">0</div>
+                        </div>
+                        <div class="card success">
+                            <h3>Closed Orders</h3>
+                            <div class="value" id="closedOrders">0</div>
+                        </div>
+                        <div class="card warning">
+                            <h3>Pending Delivery</h3>
+                            <div class="value" id="pendingDelivery">0</div>
+                        </div>
+                        <div class="card warning">
+                            <h3>Pending Payment</h3>
+                            <div class="value" id="pendingPayment">0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Tab -->
+            <div id="products" class="tab-content">
+                <div class="section">
+                    <h2 class="section-title">Add New Product</h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Product Name</label>
+                            <input type="text" id="productName" placeholder="e.g., Kashmiri Walnuts, Badam, Traditional Dress">
+                        </div>
+                        <div class="form-group">
+                            <label>Cost Price (₹)</label>
+                            <input type="number" id="productCost" placeholder="500">
+                        </div>
+                        <div class="form-group">
+                            <label>Selling Price (₹)</label>
+                            <input type="number" id="productPrice" placeholder="750">
+                        </div>
+                        <div class="form-group">
+                            <label>Stock</label>
+                            <input type="number" id="productStock" placeholder="0" min="0">
+                        </div>
+                    </div>
+                    <button class="btn-primary" onclick="addProduct()">Add Product</button>
+                    <div id="productSuccess" class="success-message"></div>
+                    <div id="productError" class="error-message"></div>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">Product List</h2>
+                    <div class="table-responsive">
+                        <table id="productTable">
+                            <thead>
+                                <tr>
+                                    <th>Product Name</th>
+                                    <th>Cost Price (₹)</th>
+                                    <th>Selling Price (₹)</th>
+                                    <th>Margin %</th>
+                                    <th>Stock</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productsList">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Orders Tab -->
+            <div id="orders" class="tab-content">
+                <div class="section">
+                    <h2 class="section-title">Manage Orders</h2>
+                    <div style="margin-bottom: 20px;">
+                        <input type="text" id="orderSearch" placeholder="🔍 Search by Order ID, Customer Name, or Phone..." style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 0.95em;" onkeyup="searchOrders()">
+                    </div>
+                    <div class="filter-buttons">
+                        <button onclick="filterOrders('all')">All Orders</button>
+                        <button class="active" onclick="filterOrders('open')">Open</button>
+                        <button onclick="filterOrders('pendingDelivery')">Pending Delivery</button>
+                        <button onclick="filterOrders('pendingPayment')">Pending Payment</button>
+                        <button onclick="filterOrders('closed')">Closed</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer</th>
+                                    <th>Total (₹)</th>
+                                    <th>Status</th>
+                                    <th>Delivery</th>
+                                    <th>Payment</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ordersList">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="ordersPagination"></div>
+                </div>
+            </div>
+
+            <!-- Customers Tab -->
+            <div id="customers" class="tab-content">
+                <div style="display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 2px solid #e8e5f5; padding-bottom: 0;">
+                    <button class="tab-button" onclick="switchCustomerSubTab('list')" id="customerListBtn" style="background: none; border: none; border-bottom: 3px solid #667eea; padding: 10px 0; margin: 0; color: #667eea; font-weight: 600;">📋 Customer List</button>
+                    <button class="tab-button" onclick="switchCustomerSubTab('history')" id="customerHistoryBtn" style="background: none; border: none; border-bottom: 3px solid transparent; padding: 10px 0; margin: 0; color: #999; font-weight: 600;">👤 Purchase History</button>
+                </div>
+
+                <div id="customerListContent" class="section">
+                    <h2 class="section-title">Customer Management</h2>
+                    <div style="margin-bottom: 20px;">
+                        <input type="text" id="customerSearchInput2" placeholder="🔍 Search by name, phone, or address..." style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 0.95em;" onkeyup="searchCustomers()">
+                    </div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>Address</th>
+                                    <th>Orders</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="customersList">
+                                <tr><td colspan="5" style="text-align: center; color: #999;">No customers yet</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="customerHistoryContent" class="section" style="display: none;">
+                    <h2 class="section-title">👤 Customer Purchase History</h2>
+                    <div style="margin-bottom: 20px;">
+                        <select id="customerHistorySelect" onchange="showCustomerHistory()" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 0.95em;">
+                            <option value="">-- Select Customer --</option>
+                        </select>
+                    </div>
+                    <div id="customerHistoryDetails" style="display: none;">
+                        <div style="margin-bottom: 20px; padding: 15px; background: #f8f7fc; border-radius: 8px;">
+                            <p style="margin: 5px 0;"><strong>Total Orders:</strong> <span id="customerTotalOrders">0</span></p>
+                            <p style="margin: 5px 0;"><strong>Total Spending:</strong> <span id="customerTotalSpending">₹0</span></p>
+                            <p style="margin: 5px 0;"><strong>Average Order Value:</strong> <span id="customerAvgValue">₹0</span></p>
+                        </div>
+                        <div class="table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Date</th>
+                                        <th>Items</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="customerHistoryTable">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Financial Summary Tab -->
+            <div id="financial" class="tab-content">
+                <div class="section" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                    <h2 class="section-title" style="margin: 0;">💰 Financial Summary</h2>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn-secondary" onclick="showFinancialSettingsModal()" style="padding: 8px 12px; font-size: 0.9em;">⚙️ Settings</button>
+                        <button class="btn-secondary" onclick="showPinSettingsModal()" style="padding: 8px 12px; font-size: 0.9em;">🔐 PIN</button>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">Summary</h2>
+                    <div class="dashboard" id="financialCards">
+                        <div class="card success">
+                            <h3>Total Revenue</h3>
+                            <div class="value" id="totalRevenue">₹0</div>
+                        </div>
+                        <div class="card">
+                            <h3>Total Cost</h3>
+                            <div class="value" id="totalCost">₹0</div>
+                        </div>
+                        <div class="card success">
+                            <h3>Total Profit</h3>
+                            <div class="value" id="totalProfit">₹0</div>
+                        </div>
+                        <div class="card primary">
+                            <h3>Profit Margin</h3>
+                            <div class="value" id="profitMargin">0%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section" id="growthTrendsSection" style="display: none;">
+                    <h2 class="section-title">📈 Growth Trends</h2>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Period</th>
+                                    <th>Orders</th>
+                                    <th>Revenue</th>
+                                    <th>Growth %</th>
+                                </tr>
+                            </thead>
+                            <tbody id="growthTrendsTable">
+                                <tr><td colspan="4" style="text-align: center; color: #999;">No data yet</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="section" id="productPerfSection" style="display: none;">
+                    <h2 class="section-title">💼 Product Performance</h2>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Revenue</th>
+                                    <th>Cost</th>
+                                    <th>Profit</th>
+                                    <th>Margin</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productPerfTableFinancial">
+                                <tr><td colspan="5" style="text-align: center; color: #999;">No sales data yet</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="section" id="topSellingSection" style="display: none;">
+                    <h2 class="section-title">📊 Top Selling Products</h2>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Qty Sold</th>
+                                    <th>Revenue</th>
+                                    <th>Profit</th>
+                                </tr>
+                            </thead>
+                            <tbody id="topProductsFinancial">
+                                <tr><td colspan="4" style="text-align: center; color: #999;">No sales data yet</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="section" id="monthlyRevenueSection" style="display: none;">
+                    <h2 class="section-title">💹 Monthly Revenue Trend</h2>
+                    <div id="monthlyRevenueChartFinancial" style="min-height: 300px; background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px;"></div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Month</th>
+                                    <th>Orders</th>
+                                    <th>Revenue</th>
+                                    <th>Cost</th>
+                                    <th>Profit</th>
+                                    <th>Margin</th>
+                                </tr>
+                            </thead>
+                            <tbody id="monthlyRevenueTable">
+                                <tr><td colspan="6" style="text-align: center; color: #999;">No data yet</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book Order Tab -->
+            <div id="order-book" class="tab-content">
+                <div class="section">
+                    <h2 class="section-title">Book New Order</h2>
+
+                    <div style="margin-bottom: 20px; padding: 15px; background: #f8f7fc; border-radius: 8px;">
+                        <p style="margin: 0 0 10px 0; font-weight: 600; color: #333;">Select Existing Customer or Create New</p>
+                        <div style="display: flex; gap: 10px; position: relative;">
+                            <div style="flex: 1; position: relative;">
+                                <input type="text" id="customerSearchInput" placeholder="🔍 Search customer by name or phone..." style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 0.9em;" onkeyup="filterCustomerList()">
+                                <div id="customerDropdownList" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #ddd; border-top: none; border-radius: 0 0 6px 6px; max-height: 200px; overflow-y: auto; z-index: 100; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                                </div>
+                            </div>
+                            <button class="btn-secondary" onclick="clearCustomerSelection()" style="padding: 10px 20px;">Clear</button>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Customer Name</label>
+                            <input type="text" id="customerName" placeholder="John Doe">
+                            <input type="hidden" id="customerId">
+                        </div>
+                        <div class="form-group">
+                            <label>Customer Phone</label>
+                            <input type="text" id="customerPhone" placeholder="9876543210">
+                        </div>
+                        <div class="form-group">
+                            <label>Customer Address</label>
+                            <input type="text" id="customerAddress" placeholder="123 Main St">
+                        </div>
+                    </div>
+
+                    <h3 style="margin-top: 25px; margin-bottom: 15px;">Add Items to Order</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Select Product</label>
+                            <select id="productSelect" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                                <option value="">-- Choose Product --</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Quantity</label>
+                            <input type="number" id="orderQuantity" min="0.01" step="0.01" value="1">
+                        </div>
+                        <div class="form-group" style="display: flex; align-items: flex-end;">
+                            <button class="btn-primary" onclick="addOrderItem()" style="width: 100%;">Add Item</button>
+                        </div>
+                    </div>
+
+                    <div class="order-items" id="orderItemsContainer" style="display: none;">
+                        <h3>Order Items</h3>
+                        <div id="orderItemsList"></div>
+                        <div style="margin-top: 15px; padding: 15px 0; border-top: 2px solid #ddd;">
+                            <div style="margin-bottom: 10px;">
+                                <label style="font-weight: 500; color: #333; font-size: 0.9em;">Additional Charges (Delivery, etc.)</label>
+                                <input type="number" id="additionalCharges" placeholder="0" min="0" step="0.01" style="width: 100%; padding: 8px 10px; border: 1px solid #ddd; border-radius: 6px; margin-top: 5px;">
+                            </div>
+                            <p style="font-size: 1.1em; font-weight: 600;">Subtotal: ₹<span id="orderSubtotal">0</span></p>
+                            <p style="font-size: 1.1em; font-weight: 600;">Additional: ₹<span id="orderAdditional">0</span></p>
+                            <p style="font-size: 1.2em; font-weight: 700; color: #667eea;">Total: ₹<span id="orderTotal">0</span></p>
+                        </div>
+                    </div>
+
+                    <div class="button-group" style="margin-top: 25px;">
+                        <button class="btn-primary" onclick="placeOrder()">Place Order</button>
+                        <button class="btn-secondary" onclick="resetOrderForm()">Reset</button>
+                    </div>
+
+                    <div id="orderSuccess" class="success-message"></div>
+                    <div id="orderError" class="error-message"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Order Modal -->
+    <div id="editOrderModal" class="modal">
+        <div class="modal-content" style="max-width: 700px;">
+            <div class="modal-header">
+                <span>Edit Order Items</span>
+                <button class="close-modal" onclick="closeEditOrderModal()">×</button>
+            </div>
+            <input type="hidden" id="editOrderId">
+
+            <div style="margin-bottom: 20px; padding: 15px; background: #f8f7fc; border-radius: 8px; border-left: 4px solid #667eea;">
+                <p style="margin: 0;"><strong>Customer:</strong> <span id="editOrderCustomer" style="color: #667eea;"></span></p>
+            </div>
+
+            <h4 style="margin: 20px 0 15px 0; font-weight: 600; color: #333;">Current Items</h4>
+            <div id="editOrderItemsList" style="margin-bottom: 20px; border: 1px solid #e8e5f5; border-radius: 8px; overflow: hidden;"></div>
+
+            <h4 style="margin: 25px 0 15px 0; font-weight: 600; color: #333;">Add New Item</h4>
+            <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 10px; padding: 15px; background: #f8f7fc; border-radius: 8px;">
+                <div class="form-group" style="margin: 0;">
+                    <label style="font-size: 0.9em;">Product</label>
+                    <select id="editOrderProductSelect" style="width: 100%; padding: 8px 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 0.9em;">
+                        <option value="">-- Choose --</option>
+                    </select>
+                </div>
+                <div class="form-group" style="margin: 0;">
+                    <label style="font-size: 0.9em;">Qty</label>
+                    <input type="number" id="editOrderQuantity" min="0.01" step="0.01" value="1" style="padding: 8px 10px; font-size: 0.9em;">
+                </div>
+                <div style="display: flex; align-items: flex-end;">
+                    <button class="btn-primary" onclick="addItemToEditOrder()" style="width: 100%; padding: 8px; font-size: 0.9em;">Add</button>
+                </div>
+            </div>
+
+            <div style="margin-top: 25px; padding: 20px; background: #f8f7fc; border-radius: 8px; border-left: 4px solid #667eea;">
+                <div style="margin-bottom: 12px; display: flex; justify-content: space-between;">
+                    <span><strong>Subtotal:</strong></span>
+                    <span id="editOrderSubtotal" style="font-weight: 600;">₹0</span>
+                </div>
+                <div style="margin-bottom: 12px; display: flex; justify-content: space-between;">
+                    <span><strong>Additional Charges:</strong></span>
+                    <input type="number" id="editOrderAdditionalCharges" placeholder="0" min="0" step="0.01" style="width: 120px; padding: 6px 8px; border: 1px solid #ddd; border-radius: 5px; text-align: right; font-weight: 600;" onchange="renderEditOrderItems()" oninput="renderEditOrderItems()">
+                </div>
+                <div style="padding-top: 12px; border-top: 2px solid #e8e5f5; display: flex; justify-content: space-between;">
+                    <span style="font-size: 1.1em; font-weight: 700;">Total:</span>
+                    <span style="font-size: 1.1em; font-weight: 700; color: #667eea;">₹<span id="editOrderTotal">0</span></span>
+                </div>
+            </div>
+
+            <div class="button-group" style="margin-top: 25px;">
+                <button class="btn-primary" onclick="saveOrderEdit()" style="flex: 1;">Save Changes</button>
+                <button class="btn-secondary" onclick="closeEditOrderModal()" style="flex: 1;">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Product Modal -->
+    <div id="editProductModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>Edit Product</span>
+                <button class="close-modal" onclick="closeEditProductModal()">×</button>
+            </div>
+            <input type="hidden" id="editProductId">
+            <div class="form-group">
+                <label>Product Name</label>
+                <input type="text" id="editProductName" placeholder="Product name">
+            </div>
+            <div class="form-group">
+                <label>Cost Price (₹)</label>
+                <input type="number" id="editProductCost" placeholder="Cost price">
+            </div>
+            <div class="form-group">
+                <label>Selling Price (₹)</label>
+                <input type="number" id="editProductPrice" placeholder="Selling price">
+            </div>
+            <div class="button-group" style="margin-top: 20px;">
+                <button class="btn-primary" onclick="saveProductEdit()">Save Changes</button>
+                <button class="btn-secondary" onclick="closeEditProductModal()">Cancel</button>
+            </div>
+            <div id="editProductError" class="error-message" style="margin-top: 15px;"></div>
+        </div>
+    </div>
+
+    <!-- Order Details Modal -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>Order Details</span>
+                <button class="close-modal" onclick="closeModal()">×</button>
+            </div>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- PIN Setup Modal -->
+    <div id="pinSetupModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>🔐 Set up PIN for Financial Summary</span>
+                <button class="close-modal" onclick="closePinSetupModal()">×</button>
+            </div>
+            <p style="margin-bottom: 20px; color: #666;">Protect your financial data with a PIN. You can always change it later.</p>
+            <div class="form-group">
+                <label>Enter a 4-digit PIN</label>
+                <input type="password" id="pinSetupInput" placeholder="0000" maxlength="4" style="font-size: 2em; text-align: center; letter-spacing: 10px;">
+            </div>
+            <div class="button-group">
+                <button class="btn-primary" onclick="savePinSetup()">Set PIN</button>
+                <button class="btn-secondary" onclick="skipPinSetup()">Skip for Now</button>
+                <button class="btn-secondary" onclick="closePinSetupModal()">Cancel</button>
+            </div>
+            <div id="pinSetupError" class="error-message" style="margin-top: 15px;"></div>
+        </div>
+    </div>
+
+    <!-- PIN Verification Modal -->
+    <div id="pinVerifyModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>🔐 Enter PIN</span>
+                <button class="close-modal" onclick="closePinVerifyModal()">×</button>
+            </div>
+            <p style="margin-bottom: 20px; color: #666;">Enter your PIN to access Financial Summary</p>
+            <div class="form-group">
+                <label>PIN</label>
+                <input type="password" id="pinVerifyInput" placeholder="0000" maxlength="4" style="font-size: 2em; text-align: center; letter-spacing: 10px;">
+            </div>
+            <div class="button-group">
+                <button class="btn-primary" onclick="verifyPin()">Verify</button>
+                <button class="btn-secondary" onclick="closePinVerifyModal()">Cancel</button>
+            </div>
+            <div style="text-align: center; margin-top: 15px;">
+                <button style="background: none; border: none; color: #667eea; cursor: pointer; font-weight: 500; padding: 0;" onclick="showForgotPinModal()">Forgot PIN?</button>
+            </div>
+            <div id="pinVerifyError" class="error-message" style="margin-top: 15px;"></div>
+        </div>
+    </div>
+
+    <!-- Forgot PIN Modal -->
+    <div id="forgotPinModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>🔓 Recover PIN</span>
+                <button class="close-modal" onclick="closeForgotPinModal()">×</button>
+            </div>
+            <p style="margin-bottom: 20px; color: #666;">Enter the master PIN to reset your Financial Summary PIN</p>
+            <div class="form-group">
+                <label>Master PIN</label>
+                <input type="password" id="masterPinInput" placeholder="••••" maxlength="4">
+            </div>
+            <div class="form-group">
+                <label>New PIN (4 digits)</label>
+                <input type="password" id="newPinInput" placeholder="0000" maxlength="4" style="font-size: 2em; text-align: center; letter-spacing: 10px;">
+            </div>
+            <div class="button-group">
+                <button class="btn-primary" onclick="resetPinWithMaster()">Reset PIN</button>
+                <button class="btn-secondary" onclick="closeForgotPinModal()">Cancel</button>
+            </div>
+            <div id="forgotPinError" class="error-message" style="margin-top: 15px;"></div>
+        </div>
+    </div>
+
+    <!-- Invoice Modal -->
+    <div id="invoiceModal" class="modal">
+        <div class="modal-content" style="max-width: 600px;">
+            <div class="modal-header">
+                <span>Order Invoice</span>
+                <button class="close-modal" onclick="closeInvoiceModal()">×</button>
+            </div>
+            <div id="invoiceContent" style="font-family: 'Courier New', monospace; white-space: pre-wrap; background: #f8f7fc; padding: 20px; border-radius: 8px; line-height: 1.8; font-size: 0.9em; max-height: 70vh; overflow-y: auto; color: #333;"></div>
+            <div class="button-group" style="margin-top: 20px;">
+                <button class="btn-primary" onclick="copyInvoiceToClipboard()">Copy to Clipboard</button>
+                <button class="btn-secondary" onclick="closeInvoiceModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Owner Name Modal -->
+    <div id="ownerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>Owner/User Name</span>
+                <button class="close-modal" onclick="closeOwnerModal()">×</button>
+            </div>
+            <div class="form-group">
+                <label>Enter your name or business owner name</label>
+                <input type="text" id="ownerNameInput" placeholder="Your name" style="margin-top: 10px;">
+            </div>
+            <div id="ownerError" class="error-message" style="margin-top: 15px; display: none;"></div>
+            <div class="button-group" style="margin-top: 20px;">
+                <button class="btn-primary" onclick="saveOwnerName()">Save</button>
+                <button class="btn-secondary" onclick="closeOwnerModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Business Setup Modal -->
+    <div id="businessSetupModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>Business Profile</span>
+                <button class="close-modal" onclick="closeBusinessSetupModal()">×</button>
+            </div>
+            <div class="form-group" style="margin-bottom: 15px;">
+                <label>Business Icon (Emoji)</label>
+                <input type="text" id="businessIconInput" maxlength="4" placeholder="🏺" style="font-size: 1.5em; padding: 10px; width: 100px;">
+            </div>
+            <div class="form-group" style="margin-bottom: 15px;">
+                <label>Business Name</label>
+                <input type="text" id="businessNameInput" placeholder="Kashmir Crafts">
+            </div>
+            <div class="form-group" style="margin-bottom: 15px;">
+                <label>Description</label>
+                <input type="text" id="businessDescriptionInput" placeholder="e.g., Premium Kashmiri Walnuts, Almonds & Handmade Dresses">
+            </div>
+            <div class="form-group" style="margin-bottom: 15px;">
+                <label>Your Name (Owner)</label>
+                <input type="text" id="businessSetupOwnerNameInput" placeholder="Your Name">
+            </div>
+            <div class="button-group">
+                <button class="btn-primary" onclick="saveBusinessSetup()" style="flex: 1;">Save</button>
+                <button class="btn-secondary" onclick="closeBusinessSetupModal()" style="flex: 1;">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>Confirm Action</span>
+                <button class="close-modal" onclick="closeConfirmModal()">×</button>
+            </div>
+            <p id="confirmMessage" style="margin-bottom: 20px; color: #666;"></p>
+            <div class="button-group">
+                <button class="btn-danger" id="confirmButton" style="flex: 1;">Confirm</button>
+                <button class="btn-secondary" onclick="closeConfirmModal()" style="flex: 1;">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Financial Settings Modal -->
+    <div id="financialSettingsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>Financial Summary Settings</span>
+                <button class="close-modal" onclick="closeFinancialSettingsModal()">×</button>
+            </div>
+            <p style="margin-bottom: 20px; color: #666;">Enable or disable additional insights:</p>
+
+            <div style="display: flex; align-items: center; padding: 15px; background: #f8f7fc; border-radius: 8px; margin-bottom: 12px;">
+                <div style="flex: 1;">
+                    <p style="margin: 0 0 5px 0; font-weight: 500; color: #333;">Growth Trends</p>
+                    <p style="margin: 0; font-size: 0.9em; color: #666;">Month-over-month growth percentage</p>
+                </div>
+                <label style="display: flex; align-items: center; cursor: pointer; margin-left: 20px;">
+                    <input type="checkbox" id="growthTrendsCheckbox" onchange="toggleFeature('growthTrends')" style="width: 20px; height: 20px; cursor: pointer;">
+                </label>
+            </div>
+
+            <div style="display: flex; align-items: center; padding: 15px; background: #f8f7fc; border-radius: 8px;">
+                <div style="flex: 1;">
+                    <p style="margin: 0 0 5px 0; font-weight: 500; color: #333;">Product Performance</p>
+                    <p style="margin: 0; font-size: 0.9em; color: #666;">Revenue and profit per product</p>
+                </div>
+                <label style="display: flex; align-items: center; cursor: pointer; margin-left: 20px;">
+                    <input type="checkbox" id="productPerfCheckbox" onchange="toggleFeature('productPerformance')" style="width: 20px; height: 20px; cursor: pointer;">
+                </label>
+            </div>
+
+            <div style="display: flex; align-items: center; padding: 15px; background: #f8f7fc; border-radius: 8px; margin-bottom: 12px;">
+                <div style="flex: 1;">
+                    <p style="margin: 0 0 5px 0; font-weight: 500; color: #333;">Top Selling Products</p>
+                    <p style="margin: 0; font-size: 0.9em; color: #666;">Show top products by revenue</p>
+                </div>
+                <label style="display: flex; align-items: center; cursor: pointer; margin-left: 20px;">
+                    <input type="checkbox" id="topSellingCheckbox" onchange="toggleFeature('topSelling')" style="width: 20px; height: 20px; cursor: pointer;">
+                </label>
+            </div>
+
+            <div style="display: flex; align-items: center; padding: 15px; background: #f8f7fc; border-radius: 8px;">
+                <div style="flex: 1;">
+                    <p style="margin: 0 0 5px 0; font-weight: 500; color: #333;">Monthly Revenue Trend</p>
+                    <p style="margin: 0; font-size: 0.9em; color: #666;">Visual chart of monthly revenue</p>
+                </div>
+                <label style="display: flex; align-items: center; cursor: pointer; margin-left: 20px;">
+                    <input type="checkbox" id="monthlyRevenueCheckbox" onchange="toggleFeature('monthlyRevenue')" style="width: 20px; height: 20px; cursor: pointer;">
+                </label>
+            </div>
+
+            <hr style="margin: 25px 0; border: none; border-top: 1px solid #ddd;">
+
+            <div style="padding: 15px; background: #ffe0e0; border-radius: 8px; border: 1px solid #ff6b6b;">
+                <p style="margin: 0 0 10px 0; font-weight: 600; color: #c92a2a;">⚠️ Danger Zone</p>
+                <p style="margin: 0 0 15px 0; font-size: 0.9em; color: #a61e4d;">Permanently delete all data. This action cannot be undone.</p>
+                <button class="btn-danger" onclick="showResetDataModal()" style="width: 100%;">Reset All Data</button>
+            </div>
+
+            <div class="button-group" style="margin-top: 20px;">
+                <button class="btn-primary" onclick="closeFinancialSettingsModal()" style="flex: 1;">Done</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Customer Modal -->
+    <div id="editCustomerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>Edit Customer</span>
+                <button class="close-modal" onclick="closeEditCustomerModal()">×</button>
+            </div>
+            <div class="form-group" style="margin-bottom: 15px;">
+                <label>Customer Name</label>
+                <input type="text" id="editCustomerName" placeholder="Name">
+            </div>
+            <div class="form-group" style="margin-bottom: 15px;">
+                <label>Phone</label>
+                <input type="text" id="editCustomerPhone" placeholder="Phone">
+            </div>
+            <div class="form-group" style="margin-bottom: 15px;">
+                <label>Address</label>
+                <input type="text" id="editCustomerAddress" placeholder="Address">
+            </div>
+            <div id="editCustomerError" style="display: none; color: #c92a2a; margin-bottom: 15px;"></div>
+            <div class="button-group">
+                <button class="btn-primary" onclick="saveCustomerEdit()" style="flex: 1;">Save</button>
+                <button class="btn-secondary" onclick="closeEditCustomerModal()" style="flex: 1;">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Manage Stock Modal -->
+    <div id="manageStockModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>Manage Stock</span>
+                <button class="close-modal" onclick="closeManageStockModal()">×</button>
+            </div>
+            <p style="margin-bottom: 15px; font-weight: 600;" id="stockProductName"></p>
+            <div style="margin-bottom: 20px; padding: 15px; background: #f8f7fc; border-radius: 6px;">
+                <p style="margin: 0 0 10px 0; color: #666;">Current Stock:</p>
+                <p style="margin: 0; font-size: 1.8em; font-weight: 700; color: #667eea;" id="currentStockDisplay">0</p>
+            </div>
+            <div class="form-group" style="margin-bottom: 15px;">
+                <label>Quantity to Add/Remove</label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="number" id="stockChangeAmount" placeholder="0" style="flex: 1;">
+                    <button class="btn-success" onclick="adjustStock('add')" style="flex: 0.5;">Add</button>
+                    <button class="btn-danger" onclick="adjustStock('remove')" style="flex: 0.8;">Remove</button>
+                </div>
+            </div>
+            <div class="form-group" style="margin-bottom: 15px;">
+                <label>Or Set to Exact Amount</label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="number" id="stockSetAmount" placeholder="0" style="flex: 1;">
+                    <button class="btn-primary" onclick="setStockExact()" style="flex: 0.5;">Set</button>
+                </div>
+            </div>
+            <div id="stockError" style="display: none; color: #c92a2a; margin-bottom: 15px;"></div>
+            <button class="btn-secondary" onclick="closeManageStockModal()" style="width: 100%;">Done</button>
+        </div>
+    </div>
+
+    <!-- Reset Data Modal -->
+    <div id="resetDataModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>⚠️ Reset All Data</span>
+                <button class="close-modal" onclick="closeResetDataModal()">×</button>
+            </div>
+            <p style="margin-bottom: 20px; color: #c92a2a; font-weight: 600;">This will permanently delete:</p>
+            <ul style="margin-bottom: 20px; color: #666;">
+                <li>All products</li>
+                <li>All orders</li>
+                <li>All customers</li>
+                <li>All settings (but not PIN)</li>
+            </ul>
+            <p style="margin-bottom: 15px; color: #666;">Enter the master PIN to confirm:</p>
+            <input type="password" id="resetMasterPin" placeholder="Master PIN" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
+            <div id="resetPinError" style="display: none; color: #c92a2a; margin-bottom: 15px; font-size: 0.9em;"></div>
+            <div class="button-group">
+                <button class="btn-danger" onclick="executeReset()" style="flex: 1;">Delete Everything</button>
+                <button class="btn-secondary" onclick="closeResetDataModal()" style="flex: 1;">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PIN Settings Modal -->
+    <div id="pinSettingsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>🔐 PIN Settings</span>
+                <button class="close-modal" onclick="closePinSettingsModal()">×</button>
+            </div>
+            <div id="pinSettingsContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // Toast Notifications
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+
+            const icon = type === 'success' ? '✓' : type === 'error' ? '✕' : 'ℹ';
+            toast.innerHTML = `<span style="font-weight: 600; font-size: 1.1em;">${icon}</span><span>${message}</span>`;
+
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.style.animation = 'slideIn 0.3s ease reverse';
+                setTimeout(() => toast.remove(), 300);
+            }, 2700);
+        }
+
+        // Data Storage
+        let products = [];
+        let orders = [];
+        let customers = [];
+        let allCustomers = [];
+        let currentOrderItems = [];
+        let currentFilter = 'open';
+        let currentSearchQuery = '';
+        let ownerName = 'Business Owner';
+        const API_BASE = 'http://localhost:3000/api';
+        const MASTER_PIN = '9096';
+        let currentPage = 1;
+        const ordersPerPage = 50;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Show splash screen with business details
+            await updateSplashScreen();
+
+            // Hide splash screen after 2 seconds
+            setTimeout(() => {
+                hideSplashScreen();
+            }, 2000);
+
+            initializeDarkMode();
+            await loadOwnerName();
+            loadPinStatus();
+            loadEnabledFeatures();
+            await loadProducts();
+            await loadOrders();
+            await loadCustomers();
+            await updateDashboard();
+            updateFeatureSections();
+
+            // Add Enter key support to forms
+            document.getElementById('productName').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') addProduct();
+            });
+            document.getElementById('productPrice').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') addProduct();
+            });
+
+            document.getElementById('customerSearchInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') filterCustomerList();
+            });
+
+            document.getElementById('orderSearch').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') searchOrders();
+            });
+
+            document.getElementById('orderQuantity').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') addOrderItem();
+            });
+        });
+
+        // PIN State
+        let pinSet = false;
+        let pinSkipped = false;
+        let pinVerified = false;
+        let pendingTab = null;
+
+        // Tab Switching
+        function switchTab(tab) {
+            if (tab === 'financial') {
+                handleFinancialTabAccess();
+                return;
+            }
+
+            activateTab(tab);
+        }
+
+        function switchCustomerSubTab(subTab) {
+            const listContent = document.getElementById('customerListContent');
+            const historyContent = document.getElementById('customerHistoryContent');
+            const listBtn = document.getElementById('customerListBtn');
+            const historyBtn = document.getElementById('customerHistoryBtn');
+
+            if (subTab === 'list') {
+                listContent.style.display = 'block';
+                historyContent.style.display = 'none';
+                listBtn.style.borderBottom = '3px solid #667eea';
+                listBtn.style.color = '#667eea';
+                historyBtn.style.borderBottom = '3px solid transparent';
+                historyBtn.style.color = '#999';
+            } else {
+                listContent.style.display = 'none';
+                historyContent.style.display = 'block';
+                listBtn.style.borderBottom = '3px solid transparent';
+                listBtn.style.color = '#999';
+                historyBtn.style.borderBottom = '3px solid #667eea';
+                historyBtn.style.color = '#667eea';
+                loadCustomerHistoryDropdown();
+            }
+        }
+
+        function activateTab(tab) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-button').forEach(el => el.classList.remove('active'));
+
+            document.getElementById(tab).classList.add('active');
+            event.target.classList.add('active');
+
+            if (tab === 'orders') loadOrders();
+            if (tab === 'dashboard') updateDashboard();
+            if (tab === 'products') loadProducts();
+            if (tab === 'order-book') populateProductSelect();
+            if (tab === 'customers') loadCustomerHistoryDropdown();
+            if (tab === 'financial') {
+                updateDashboard();
+            }
+        }
+
+        async function handleFinancialTabAccess() {
+            if (!pinSet && !pinSkipped) {
+                // First time accessing - ask to setup PIN
+                pendingTab = 'financial';
+                showPinSetupModal();
+            } else if (pinSet && !pinVerified) {
+                // PIN is set - ask for verification
+                pendingTab = 'financial';
+                showPinVerifyModal();
+            } else {
+                // Either PIN skipped or already verified
+                activateTab('financial');
+            }
+        }
+
+        // Load PIN status on page load
+        async function loadPinStatus() {
+            try {
+                const response = await fetch(`${API_BASE}/pin/status`);
+                const data = await response.json();
+                pinSet = data.pinSet;
+                pinSkipped = data.pinSkipped;
+            } catch (err) {
+                console.error('Error loading PIN status:', err);
+            }
+        }
+
+        // Owner Name Management
+        async function loadOwnerName() {
+            try {
+                const response = await fetch(`${API_BASE}/settings`);
+                const settings = await response.json();
+                ownerName = settings.ownerName || 'Business Owner';
+                const businessName = settings.businessName || 'Kashmir Crafts';
+                const businessIcon = settings.businessIcon || '🏺';
+                const businessDescription = settings.businessDescription || 'Premium Kashmiri Walnuts, Almonds & Handmade Dresses';
+
+                document.getElementById('ownerDisplayName').textContent = ownerName;
+                document.getElementById('businessName').textContent = businessName;
+                document.getElementById('businessIcon').textContent = businessIcon;
+                document.getElementById('businessDescription').textContent = businessDescription;
+
+                // Load preferences from settings
+                if (settings.darkMode) {
+                    document.body.classList.add('dark-mode');
+                }
+                updateThemeIcon();
+
+                // Load feature toggles from settings with defaults for missing properties
+                const defaults = {
+                    growthTrends: false,
+                    productPerformance: false,
+                    topSelling: false,
+                    monthlyRevenue: false
+                };
+                enabledFeatures = {
+                    ...defaults,
+                    ...(settings.enabledFeatures || {})
+                };
+
+                // Check if this is first time - if no business name set AND user hasn't dismissed the modal
+                if (!settings.businessName && !settings.setupModalDismissed) {
+                    setTimeout(() => showBusinessSetupModal(), 500);
+                }
+            } catch (err) {
+                console.error('Error loading owner name:', err);
+            }
+        }
+
+        async function showBusinessSetupModal() {
+            try {
+                // Get fresh settings from server
+                const response = await fetch(`${API_BASE}/settings`);
+                const settings = await response.json();
+
+                document.getElementById('businessIconInput').value = settings.businessIcon || '🏺';
+                document.getElementById('businessNameInput').value = settings.businessName || 'Kashmir Crafts';
+                document.getElementById('businessDescriptionInput').value = settings.businessDescription || 'Premium Kashmiri Walnuts, Almonds & Handmade Dresses';
+                document.getElementById('businessSetupOwnerNameInput').value = settings.ownerName || 'Business Owner';
+            } catch (err) {
+                console.error('Error loading settings:', err);
+                // Set defaults if fetch fails
+                document.getElementById('businessIconInput').value = '🏺';
+                document.getElementById('businessNameInput').value = 'Kashmir Crafts';
+                document.getElementById('businessDescriptionInput').value = 'Premium Kashmiri Walnuts, Almonds & Handmade Dresses';
+                document.getElementById('businessSetupOwnerNameInput').value = 'Business Owner';
+            }
+
+            document.getElementById('businessSetupModal').classList.add('show');
+        }
+
+        async function closeBusinessSetupModal() {
+            // Mark setup modal as dismissed so it doesn't show on next reload
+            try {
+                await fetch(`${API_BASE}/settings`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ setupModalDismissed: true })
+                });
+            } catch (err) {
+                console.error('Error saving setup modal state:', err);
+            }
+            document.getElementById('businessSetupModal').classList.remove('show');
+        }
+
+        async function saveBusinessSetup() {
+            const icon = document.getElementById('businessIconInput').value.trim() || '🏺';
+            const name = document.getElementById('businessNameInput').value.trim();
+            const description = document.getElementById('businessDescriptionInput').value.trim();
+            const ownerNameVal = document.getElementById('businessSetupOwnerNameInput').value.trim();
+
+            if (!name || !description || !ownerNameVal) {
+                showToast('Please fill all fields', 'error');
+                return;
+            }
+
+            showLoadingOverlay();
+            try {
+                const response = await fetch(`${API_BASE}/settings`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        businessName: name,
+                        businessIcon: icon,
+                        businessDescription: description,
+                        ownerName: ownerNameVal
+                    })
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    // Update global variable and UI immediately
+                    ownerName = ownerNameVal;
+
+                    // Reload fresh from server to ensure consistency
+                    const freshResponse = await fetch(`${API_BASE}/settings`);
+                    const freshSettings = await freshResponse.json();
+
+                    // Update all header elements with fresh data
+                    document.getElementById('businessIcon').textContent = freshSettings.businessIcon || icon;
+                    document.getElementById('businessName').textContent = freshSettings.businessName || name;
+                    document.getElementById('businessDescription').textContent = freshSettings.businessDescription || description;
+                    document.getElementById('ownerDisplayName').textContent = freshSettings.ownerName || ownerNameVal;
+
+                    // Mark setup as complete in backend
+                    try {
+                        await fetch(`${API_BASE}/settings`, {
+                            method: 'PUT',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ setupModalDismissed: true })
+                        });
+                    } catch (err) {
+                        console.error('Error saving setup state:', err);
+                    }
+
+                    closeBusinessSetupModal();
+                    showToast('Business profile saved!', 'success');
+                } else {
+                    showToast('Failed to save profile', 'error');
+                }
+            } catch (err) {
+                showToast('Error: ' + err.message, 'error');
+            } finally {
+                showLoadingOverlay(false);
+            }
+        }
+
+        function showOwnerModal() {
+            document.getElementById('ownerNameInput').value = ownerName;
+            document.getElementById('ownerError').style.display = 'none';
+            document.getElementById('ownerModal').classList.add('show');
+            document.getElementById('ownerNameInput').focus();
+        }
+
+        function closeOwnerModal() {
+            document.getElementById('ownerModal').classList.remove('show');
+        }
+
+        async function saveOwnerName() {
+            const name = document.getElementById('ownerNameInput').value.trim();
+            const errorEl = document.getElementById('ownerError');
+
+            errorEl.style.display = 'none';
+
+            if (!name) {
+                errorEl.textContent = 'Please enter a name';
+                errorEl.style.display = 'block';
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE}/settings`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ ownerName: name })
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    ownerName = name;
+                    document.getElementById('ownerDisplayName').textContent = ownerName;
+                    closeOwnerModal();
+                } else {
+                    errorEl.textContent = 'Failed to save name';
+                    errorEl.style.display = 'block';
+                }
+            } catch (err) {
+                errorEl.textContent = 'Error: ' + err.message;
+                errorEl.style.display = 'block';
+            }
+        }
+
+        // Customer Management
+        async function loadCustomers() {
+            try {
+                const response = await fetch(`${API_BASE}/customers`);
+                customers = await response.json();
+                allCustomers = [...customers];
+                populateCustomerSelect();
+                await loadCustomersTable();
+            } catch (err) {
+                console.error('Error loading customers:', err);
+            }
+        }
+
+        function populateCustomerSelect() {
+            // Updated for searchable dropdown
+        }
+
+        function filterCustomerList() {
+            const searchInput = document.getElementById('customerSearchInput').value.toLowerCase();
+            const dropdownList = document.getElementById('customerDropdownList');
+
+            if (searchInput.length === 0) {
+                dropdownList.style.display = 'none';
+                return;
+            }
+
+            const filteredCustomers = customers.filter(c =>
+                c.name.toLowerCase().includes(searchInput) ||
+                c.phone.includes(searchInput)
+            );
+
+            if (filteredCustomers.length === 0) {
+                dropdownList.innerHTML = '<div style="padding: 10px; color: #999;">No customers found</div>';
+            } else {
+                dropdownList.innerHTML = filteredCustomers.map(customer => `
+                    <div style="padding: 12px 15px; border-bottom: 1px solid #f0f0f0; cursor: pointer; transition: background 0.2s;" onmouseover="this.style.background='#f8f7fc'" onmouseout="this.style.background='white'" onclick="selectCustomer('${customer.id}')">
+                        <div style="font-weight: 500; color: #333;">${customer.name}</div>
+                        <div style="font-size: 0.9em; color: #666;">${customer.phone}</div>
+                    </div>
+                `).join('');
+            }
+
+            dropdownList.style.display = 'block';
+        }
+
+        function selectCustomer(customerId) {
+            const customer = customers.find(c => c.id === parseInt(customerId));
+            if (!customer) return;
+
+            document.getElementById('customerSearchInput').value = `${customer.name} (${customer.phone})`;
+            document.getElementById('customerId').value = customer.id;
+            document.getElementById('customerName').value = customer.name;
+            document.getElementById('customerPhone').value = customer.phone;
+            document.getElementById('customerAddress').value = customer.address || '';
+            document.getElementById('customerDropdownList').style.display = 'none';
+        }
+
+        function clearCustomerSelection() {
+            document.getElementById('customerSearchInput').value = '';
+            document.getElementById('customerId').value = '';
+            document.getElementById('customerName').value = '';
+            document.getElementById('customerPhone').value = '';
+            document.getElementById('customerAddress').value = '';
+            document.getElementById('customerDropdownList').style.display = 'none';
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const searchInput = document.getElementById('customerSearchInput');
+            const dropdownList = document.getElementById('customerDropdownList');
+            if (searchInput && dropdownList && event.target !== searchInput && event.target !== dropdownList) {
+                dropdownList.style.display = 'none';
+            }
+        });
+
+        async function saveOrUpdateCustomer(name, phone, address) {
+            const existingCustomer = customers.find(c => c.phone === phone);
+
+            if (existingCustomer) {
+                try {
+                    const response = await fetch(`${API_BASE}/customers/${existingCustomer.id}`, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ name, phone, address })
+                    });
+                    const result = await response.json();
+                    return result.customer;
+                } catch (err) {
+                    console.error('Error updating customer:', err);
+                    return existingCustomer;
+                }
+            } else {
+                try {
+                    const response = await fetch(`${API_BASE}/customers`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ name, phone, address })
+                    });
+                    const result = await response.json();
+                    if (result.success) {
+                        customers.push(result.customer);
+                        populateCustomerSelect();
+                        return result.customer;
+                    }
+                } catch (err) {
+                    console.error('Error creating customer:', err);
+                }
+            }
+            return null;
+        }
+
+        // Product Management
+        async function addProduct() {
+            const name = document.getElementById('productName').value.trim();
+            const cost = parseFloat(document.getElementById('productCost').value);
+            const price = parseFloat(document.getElementById('productPrice').value);
+            const stock = parseInt(document.getElementById('productStock').value) || 0;
+
+            if (!name || !cost || !price) {
+                showToast('Please fill all fields', 'error');
+                return;
+            }
+
+            if (cost >= price) {
+                showToast('Selling price must be greater than cost price', 'error');
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE}/products`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, cost, price, stock })
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    showToast('Product added successfully!', 'success');
+
+                    document.getElementById('productName').value = '';
+                    document.getElementById('productCost').value = '';
+                    document.getElementById('productPrice').value = '';
+                    document.getElementById('productStock').value = '';
+
+                    await loadProducts();
+                    await populateProductSelect();
+                }
+            } catch (err) {
+                showToast('Error adding product: ' + err.message, 'error');
+            }
+        }
+
+        async function deleteProduct(id) {
+            showConfirmModal('Are you sure you want to delete this product?', async () => {
+                showLoadingOverlay();
+                try {
+                    const response = await fetch(`${API_BASE}/products/${id}`, { method: 'DELETE' });
+                    if (response.ok) {
+                        await loadProducts();
+                        await populateProductSelect();
+                        showToast('Product deleted successfully', 'success');
+                    } else {
+                        showToast('Failed to delete product', 'error');
+                    }
+                } catch (err) {
+                    showToast('Error deleting product: ' + err.message, 'error');
+                } finally {
+                    showLoadingOverlay(false);
+                }
+            });
+        }
+
+        async function loadProducts() {
+            try {
+                const response = await fetch(`${API_BASE}/products`);
+                products = await response.json();
+                const tbody = document.getElementById('productsList');
+                tbody.innerHTML = '';
+
+                products.forEach(product => {
+                    const margin = (((product.price - product.cost) / product.price) * 100).toFixed(1);
+                    const stock = product.stock || 0;
+                    const stockColor = stock > 10 ? '#2f9e44' : stock > 0 ? '#f59f00' : '#c92a2a';
+                    tbody.innerHTML += `
+                        <tr>
+                            <td>${product.name}</td>
+                            <td>₹${product.cost.toFixed(2)}</td>
+                            <td>₹${product.price.toFixed(2)}</td>
+                            <td>${margin}%</td>
+                            <td style="color: ${stockColor}; font-weight: 600;">
+                                ${stock}
+                                <button class="btn-secondary" onclick="showManageStockModal(${product.id})" style="margin-left: 10px; padding: 4px 8px; font-size: 0.8em;">Adjust</button>
+                            </td>
+                            <td>
+                                <button class="btn-primary" onclick="editProduct(${product.id})" style="margin-right: 5px;">Edit</button>
+                                <button class="btn-danger" onclick="confirmDeleteProduct(${product.id})">Delete</button>
+                            </td>
+                        </tr>
+                    `;
+                });
+
+                if (products.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: #999;">No products added yet</td></tr>';
+                }
+            } catch (err) {
+                console.error('Error loading products:', err);
+            }
+        }
+
+        function editProduct(id) {
+            const product = products.find(p => p.id === id);
+            if (!product) return;
+
+            const modal = document.getElementById('editProductModal');
+            document.getElementById('editProductId').value = id;
+            document.getElementById('editProductName').value = product.name;
+            document.getElementById('editProductCost').value = product.cost;
+            document.getElementById('editProductPrice').value = product.price;
+            document.getElementById('editProductError').style.display = 'none';
+            modal.classList.add('show');
+            document.getElementById('editProductName').focus();
+        }
+
+        async function saveProductEdit() {
+            const id = parseInt(document.getElementById('editProductId').value);
+            const name = document.getElementById('editProductName').value.trim();
+            const cost = parseFloat(document.getElementById('editProductCost').value);
+            const price = parseFloat(document.getElementById('editProductPrice').value);
+            const errorEl = document.getElementById('editProductError');
+
+            errorEl.style.display = 'none';
+
+            if (!name || !cost || !price) {
+                errorEl.textContent = 'Please fill all fields';
+                errorEl.style.display = 'block';
+                return;
+            }
+
+            if (cost >= price) {
+                errorEl.textContent = 'Selling price must be greater than cost price';
+                errorEl.style.display = 'block';
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE}/products/${id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, cost, price })
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    closeEditProductModal();
+                    await loadProducts();
+                    await populateProductSelect();
+                } else {
+                    errorEl.textContent = result.error || 'Failed to update product';
+                    errorEl.style.display = 'block';
+                }
+            } catch (err) {
+                errorEl.textContent = 'Error: ' + err.message;
+                errorEl.style.display = 'block';
+            }
+        }
+
+        function closeEditProductModal() {
+            document.getElementById('editProductModal').classList.remove('show');
+        }
+
+        function confirmDeleteProduct(id) {
+            if (confirm('Are you sure you want to delete this product? This will not affect existing orders.')) {
+                deleteProduct(id);
+            }
+        }
+
+        async function deleteProduct(id) {
+            try {
+                const response = await fetch(`${API_BASE}/products/${id}`, { method: 'DELETE' });
+                if (response.ok) {
+                    await loadProducts();
+                    await populateProductSelect();
+                }
+            } catch (err) {
+                alert('Error deleting product: ' + err.message);
+            }
+        }
+
+        // Order Item Management
+        function populateProductSelect() {
+            const select = document.getElementById('productSelect');
+            select.innerHTML = '<option value="">-- Choose Product --</option>';
+            products.forEach(product => {
+                select.innerHTML += `<option value="${product.id}">${product.name} (₹${product.price})</option>`;
+            });
+        }
+
+        function addOrderItem() {
+            const productId = parseInt(document.getElementById('productSelect').value);
+            const quantity = parseFloat(document.getElementById('orderQuantity').value);
+            const errorEl = document.getElementById('orderError');
+            const successEl = document.getElementById('orderSuccess');
+
+            errorEl.style.display = 'none';
+            successEl.style.display = 'none';
+
+            if (!productId || !quantity || quantity <= 0) {
+                errorEl.textContent = 'Please select a product and enter valid quantity';
+                errorEl.style.display = 'block';
+                return;
+            }
+
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            currentOrderItems.push({
+                productId: productId,
+                productName: product.name,
+                cost: product.cost,
+                price: product.price,
+                quantity: quantity
+            });
+
+            document.getElementById('productSelect').value = '';
+            document.getElementById('orderQuantity').value = '1';
+            renderOrderItems();
+        }
+
+        function removeOrderItem(index) {
+            currentOrderItems.splice(index, 1);
+            renderOrderItems();
+        }
+
+        function renderOrderItems() {
+            const container = document.getElementById('orderItemsContainer');
+            const itemsList = document.getElementById('orderItemsList');
+
+            if (currentOrderItems.length === 0) {
+                container.style.display = 'none';
+                return;
+            }
+
+            container.style.display = 'block';
+            itemsList.innerHTML = '';
+            let subtotal = 0;
+
+            currentOrderItems.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                itemsList.innerHTML += `
+                    <div class="order-item">
+                        <div class="item-details">
+                            <p>${item.productName}</p>
+                            <p style="font-size: 0.9em; color: #666;">Qty: ${item.quantity} × ₹${item.price}</p>
+                        </div>
+                        <div>
+                            <span class="item-price">₹${itemTotal.toFixed(2)}</span>
+                            <button class="btn-danger" onclick="removeOrderItem(${index})" style="margin-left: 10px;">Remove</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            const additionalCharges = parseFloat(document.getElementById('additionalCharges').value) || 0;
+            const total = subtotal + additionalCharges;
+
+            document.getElementById('orderSubtotal').textContent = subtotal.toFixed(2);
+            document.getElementById('orderAdditional').textContent = additionalCharges.toFixed(2);
+            document.getElementById('orderTotal').textContent = total.toFixed(2);
+        }
+
+        // Update order total when additional charges change
+        document.addEventListener('input', function(e) {
+            if (e.target.id === 'additionalCharges') {
+                renderOrderItems();
+            }
+        });
+
+        async function placeOrder() {
+            const customerId = parseInt(document.getElementById('customerId').value) || null;
+            const customerName = document.getElementById('customerName').value.trim();
+            const customerPhone = document.getElementById('customerPhone').value.trim();
+            const customerAddress = document.getElementById('customerAddress').value.trim();
+            const additionalCharges = parseFloat(document.getElementById('additionalCharges').value) || 0;
+
+            if (!customerName || !customerPhone || !customerAddress) {
+                showToast('Please fill all customer details', 'error');
+                return;
+            }
+
+            if (currentOrderItems.length === 0) {
+                showToast('Please add at least one item to the order', 'error');
+                return;
+            }
+
+            const orderSubtotal = currentOrderItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const orderCost = currentOrderItems.reduce((sum, item) => sum + (item.cost * item.quantity), 0);
+            const orderTotal = orderSubtotal + additionalCharges;
+
+            try {
+                // Save or update customer and get the actual customer ID
+                const savedCustomer = await saveOrUpdateCustomer(customerName, customerPhone, customerAddress);
+                const finalCustomerId = savedCustomer ? savedCustomer.id : customerId;
+
+                const order = {
+                    customerId: finalCustomerId,
+                    customerName: customerName,
+                    customerPhone: customerPhone,
+                    customerAddress: customerAddress,
+                    items: JSON.parse(JSON.stringify(currentOrderItems)),
+                    subtotal: orderSubtotal,
+                    additionalCharges: additionalCharges,
+                    total: orderTotal,
+                    cost: orderCost,
+                    profit: orderTotal - orderCost,
+                    deliveryDone: false,
+                    paymentDone: false,
+                    createdAt: new Date().toISOString()
+                };
+
+                const response = await fetch(`${API_BASE}/orders`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(order)
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    showToast('Order placed successfully! Order ID: #' + result.order.id, 'success');
+
+                    // Show invoice
+                    generateAndShowInvoice(result.order);
+
+                    resetOrderForm();
+                    await loadOrders();
+                    await loadCustomers();
+                    await updateDashboard();
+                }
+            } catch (err) {
+                showToast('Error placing order: ' + err.message, 'error');
+            }
+        }
+
+        function resetOrderForm() {
+            document.getElementById('customerName').value = '';
+            document.getElementById('customerPhone').value = '';
+            document.getElementById('customerAddress').value = '';
+            document.getElementById('productSelect').value = '';
+            document.getElementById('orderQuantity').value = '1';
+            currentOrderItems = [];
+            renderOrderItems();
+        }
+
+        // Order Management
+        async function loadOrders() {
+            try {
+                const response = await fetch(`${API_BASE}/orders`);
+                orders = await response.json();
+                document.getElementById('orderSearch').value = '';
+                currentSearchQuery = '';
+                displayFilteredOrders();
+            } catch (err) {
+                console.error('Error loading orders:', err);
+            }
+        }
+
+        function filterOrders(filter) {
+            currentFilter = filter;
+            currentPage = 1;
+            document.querySelectorAll('.filter-buttons button').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            displayFilteredOrders();
+        }
+
+        function getOrderStatus(order) {
+            if (order.deliveryDone && order.paymentDone) {
+                return '<span class="badge badge-success">CLOSED</span>';
+            } else if (order.deliveryDone && !order.paymentDone) {
+                return '<span class="badge badge-warning">Pending Payment</span>';
+            } else if (!order.deliveryDone && order.paymentDone) {
+                return '<span class="badge badge-warning">Pending Delivery</span>';
+            } else {
+                return '<span class="badge badge-danger">OPEN</span>';
+            }
+        }
+
+        function viewOrderDetails(orderId) {
+            const order = orders.find(o => o.id === orderId);
+            if (!order) return;
+
+            const itemsHtml = order.items.map(item => `
+                <div class="order-item">
+                    <div class="item-details">
+                        <p>${item.productName}</p>
+                        <p style="font-size: 0.9em; color: #666;">Qty: ${item.quantity} × ₹${item.price}</p>
+                    </div>
+                    <span class="item-price">₹${(item.price * item.quantity).toFixed(2)}</span>
+                </div>
+            `).join('');
+
+            let modalHtml = `
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <h3 style="margin: 0;">Order #${order.id}</h3>
+                    ${order.status !== 'cancelled' && !(order.deliveryDone && order.paymentDone) ? `<button class="btn-success" onclick="directCloseOrder(${order.id})" style="padding: 8px 16px; font-size: 0.9em;">✓ DIRECT CLOSE</button>` : ''}
+                </div>`;
+
+            if (order.status === 'cancelled') {
+                modalHtml += `<div style="margin-bottom: 20px; padding: 15px; background: #ffe0e0; border-radius: 5px; border: 1px solid #ff6b6b;">
+                    <p style="color: #c92a2a; font-weight: 600;"><strong>⚠ This order is CANCELLED</strong></p>
+                </div>`;
+            }
+
+            modalHtml += `
+                <div style="margin-bottom: 20px; padding: 15px; background: #f8f7fc; border-radius: 5px; border: 1px solid #e8e5f5;">
+                    <p><strong>Customer:</strong> ${order.customerName}</p>
+                    <p><strong>Phone:</strong> ${order.customerPhone}</p>
+                    <p><strong>Address:</strong> ${order.customerAddress}</p>
+                    <p><strong>Date:</strong> ${new Date(order.createdAt).toLocaleDateString()}</p>
+                </div>
+
+                <h4 style="margin-bottom: 10px;">Items:</h4>
+                <div class="order-items" style="display: block;">
+                    ${itemsHtml}
+                </div>
+
+                <div style="margin-top: 20px; padding: 15px; background: #f8f7fc; border-radius: 5px; border: 1px solid #e8e5f5;">
+                    <p><strong>Subtotal:</strong> ₹${(order.total - (order.additionalCharges || 0)).toFixed(2)}</p>
+                    ${order.additionalCharges ? `<p><strong>Additional Charges:</strong> ₹${order.additionalCharges.toFixed(2)}</p>` : ''}
+                    <p><strong>Total Amount:</strong> ₹${order.total.toFixed(2)}</p>
+                    <hr style="margin: 10px 0; border: none; border-top: 1px solid #e8e5f5;">
+                    <p><strong>Total Cost:</strong> ₹${order.cost.toFixed(2)}</p>
+                    <p><strong>Profit:</strong> ₹${order.profit.toFixed(2)}</p>
+                </div>
+
+                <div style="margin-top: 20px; padding: 15px; background: #f8f7fc; border-radius: 5px; border: 1px solid #e8e5f5;">
+                    <p style="margin-bottom: 10px;"><strong>Status:</strong></p>
+                    <p style="margin: 5px 0;">Delivery: ${order.deliveryDone ? '<span class="badge badge-success">✓ Done</span>' : '<span class="badge badge-warning">Pending</span>'}</p>
+                    <p style="margin: 5px 0;">Payment: ${order.paymentDone ? '<span class="badge badge-success">✓ Done</span>' : '<span class="badge badge-warning">Pending</span>'}</p>
+                </div>
+            `;
+
+            if (order.status !== 'cancelled') {
+                modalHtml += `<div class="button-group" style="margin-top: 20px;">
+                    ${!order.deliveryDone ? `<button class="btn-success" onclick="markDelivery(${order.id})">Mark Delivery Done</button>` : ''}
+                    ${!order.paymentDone ? `<button class="btn-success" onclick="markPayment(${order.id})">Mark Payment Done</button>` : ''}
+                    ${!order.deliveryDone && !order.paymentDone ? `<button class="btn-primary" onclick="editOrder(${order.id})">Edit Order</button>` : ''}
+                    ${order.deliveryDone && order.paymentDone ? '<button class="btn-secondary" disabled>Order Closed</button>' : ''}
+                </div>`;
+            }
+
+            modalHtml += `<div style="margin-top: 15px;">
+                <button class="btn-secondary" onclick="toggleMoreActions(${order.id})" style="width: 100%;">More Actions ▼</button>
+                <div id="moreActions_${order.id}" style="display: none; margin-top: 10px;">`;
+
+            if (order.status === 'cancelled') {
+                modalHtml += `<button class="btn-success" onclick="reopenOrder(${order.id})" style="width: 100%; margin-bottom: 8px;">↶ Reopen Order</button>`;
+            } else {
+                modalHtml += `${order.deliveryDone ? `<button class="btn-warning" onclick="reverseDelivery(${order.id})" style="width: 100%; margin-bottom: 8px;">↶ Reverse Delivery Done</button>` : ''}
+                    ${order.paymentDone ? `<button class="btn-warning" onclick="reversePayment(${order.id})" style="width: 100%; margin-bottom: 8px;">↶ Reverse Payment Done</button>` : ''}
+                    <button class="btn-danger" onclick="cancelOrder(${order.id})" style="width: 100%; margin-bottom: 8px;">Cancel Order</button>`;
+            }
+
+            modalHtml += `<button class="btn-danger" onclick="deleteOrder(${order.id})" style="width: 100%;">Delete Order</button>
+                </div>
+            </div>`;
+
+            document.getElementById('modalBody').innerHTML = modalHtml;
+            document.getElementById('orderModal').classList.add('show');
+        }
+
+        function toggleMoreActions(orderId) {
+            const moreActionsDiv = document.getElementById(`moreActions_${orderId}`);
+            moreActionsDiv.style.display = moreActionsDiv.style.display === 'none' ? 'block' : 'none';
+        }
+
+        let editingOrderItems = [];
+
+        function editOrder(orderId) {
+            const order = orders.find(o => o.id === orderId);
+            if (!order) return;
+
+            editingOrderItems = JSON.parse(JSON.stringify(order.items));
+
+            document.getElementById('editOrderId').value = orderId;
+            document.getElementById('editOrderCustomer').textContent = order.customerName;
+            document.getElementById('editOrderAdditionalCharges').value = order.additionalCharges || 0;
+
+            populateEditOrderProductSelect();
+            renderEditOrderItems();
+
+            // Close the order details modal first
+            closeModal();
+
+            // Then open the edit modal
+            setTimeout(() => {
+                document.getElementById('editOrderModal').classList.add('show');
+            }, 100);
+        }
+
+        function closeEditOrderModal() {
+            document.getElementById('editOrderModal').classList.remove('show');
+            editingOrderItems = [];
+        }
+
+        function populateEditOrderProductSelect() {
+            const select = document.getElementById('editOrderProductSelect');
+            select.innerHTML = '<option value="">-- Choose Product --</option>';
+            products.forEach(product => {
+                select.innerHTML += `<option value="${product.id}">${product.name} (₹${product.price})</option>`;
+            });
+        }
+
+        function addItemToEditOrder() {
+            const productId = parseInt(document.getElementById('editOrderProductSelect').value);
+            const quantity = parseFloat(document.getElementById('editOrderQuantity').value);
+
+            if (!productId || !quantity || quantity <= 0) {
+                alert('Please select a product and enter valid quantity');
+                return;
+            }
+
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const existingItem = editingOrderItems.find(i => i.productId === productId);
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                editingOrderItems.push({
+                    productId: productId,
+                    productName: product.name,
+                    cost: product.cost,
+                    price: product.price,
+                    quantity: quantity
+                });
+            }
+
+            document.getElementById('editOrderProductSelect').value = '';
+            document.getElementById('editOrderQuantity').value = '1';
+            renderEditOrderItems();
+        }
+
+        function removeEditOrderItem(productId) {
+            editingOrderItems = editingOrderItems.filter(i => i.productId !== productId);
+            renderEditOrderItems();
+        }
+
+        function renderEditOrderItems() {
+            const itemsList = document.getElementById('editOrderItemsList');
+            itemsList.innerHTML = '';
+            let subtotal = 0;
+
+            if (editingOrderItems.length === 0) {
+                itemsList.innerHTML = '<div style="padding: 20px; text-align: center; color: #999;">No items added</div>';
+            } else {
+                editingOrderItems.forEach((item, index) => {
+                    const itemTotal = item.price * item.quantity;
+                    subtotal += itemTotal;
+                    itemsList.innerHTML += `
+                        <div style="padding: 15px; border-bottom: 1px solid #e8e5f5; display: flex; justify-content: space-between; align-items: center;">
+                            <div style="flex: 1;">
+                                <p style="margin: 0 0 8px 0; font-weight: 500; color: #333;">${item.productName}</p>
+                                <p style="margin: 0; font-size: 0.9em; color: #666;">₹${item.price} per unit</p>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <div style="display: flex; align-items: center; gap: 5px;">
+                                    <label style="font-size: 0.9em; color: #666; margin: 0;">Qty:</label>
+                                    <input type="number" value="${item.quantity}" min="0.01" step="0.01" style="width: 60px; padding: 6px 8px; border: 1px solid #ddd; border-radius: 5px; text-align: center;" onchange="updateEditItemQuantity(${index}, this.value)">
+                                </div>
+                                <span style="font-weight: 600; min-width: 80px; text-align: right;">₹${itemTotal.toFixed(2)}</span>
+                                <button class="btn-danger" onclick="removeEditOrderItem(${item.productId})" style="padding: 5px 10px; font-size: 0.85em;">Remove</button>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
+            const additionalCharges = parseFloat(document.getElementById('editOrderAdditionalCharges').value) || 0;
+            const grandTotal = subtotal + additionalCharges;
+            document.getElementById('editOrderSubtotal').textContent = '₹' + subtotal.toFixed(2);
+            document.getElementById('editOrderTotal').textContent = grandTotal.toFixed(2);
+        }
+
+        function updateEditItemQuantity(index, newQuantity) {
+            const qty = parseFloat(newQuantity);
+            if (qty > 0) {
+                editingOrderItems[index].quantity = qty;
+                renderEditOrderItems();
+            }
+        }
+
+        async function saveOrderEdit() {
+            const orderId = parseInt(document.getElementById('editOrderId').value);
+            const additionalCharges = parseFloat(document.getElementById('editOrderAdditionalCharges').value) || 0;
+
+            if (editingOrderItems.length === 0) {
+                alert('Please add at least one item to the order');
+                return;
+            }
+
+            const orderSubtotal = editingOrderItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const orderCost = editingOrderItems.reduce((sum, item) => sum + (item.cost * item.quantity), 0);
+            const orderTotal = orderSubtotal + additionalCharges;
+
+            try {
+                const response = await fetch(`${API_BASE}/orders/${orderId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        items: editingOrderItems,
+                        subtotal: orderSubtotal,
+                        additionalCharges: additionalCharges,
+                        total: orderTotal,
+                        cost: orderCost,
+                        profit: orderTotal - orderCost
+                    })
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    const orderIndex = orders.findIndex(o => o.id === orderId);
+                    if (orderIndex !== -1) {
+                        orders[orderIndex] = result.order;
+                    }
+                    closeEditOrderModal();
+                    await viewOrderDetails(orderId);
+                    await loadOrders();
+                    await updateDashboard();
+                } else {
+                    alert('Failed to save order');
+                }
+            } catch (err) {
+                alert('Error: ' + err.message);
+            }
+        }
+
+        async function markDelivery(orderId) {
+            try {
+                const response = await fetch(`${API_BASE}/orders/${orderId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ deliveryDone: true })
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    const orderIndex = orders.findIndex(o => o.id === orderId);
+                    if (orderIndex !== -1) {
+                        orders[orderIndex] = result.order;
+                    }
+                    await viewOrderDetails(orderId);
+                    await loadOrders();
+                    await updateDashboard();
+                }
+            } catch (err) {
+                alert('Error updating delivery: ' + err.message);
+            }
+        }
+
+        async function markPayment(orderId) {
+            try {
+                const response = await fetch(`${API_BASE}/orders/${orderId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ paymentDone: true })
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    const orderIndex = orders.findIndex(o => o.id === orderId);
+                    if (orderIndex !== -1) {
+                        orders[orderIndex] = result.order;
+                    }
+                    await viewOrderDetails(orderId);
+                    await loadOrders();
+                    await updateDashboard();
+                }
+            } catch (err) {
+                alert('Error updating payment: ' + err.message);
+            }
+        }
+
+        async function reverseDelivery(orderId) {
+            showConfirmModal('Reverse delivery status? Order will be pending delivery again.', async () => {
+                showLoadingOverlay();
+                try {
+                    const response = await fetch(`${API_BASE}/orders/${orderId}`, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ deliveryDone: false })
+                    });
+
+                    if (response.ok) {
+                        const result = await response.json();
+                        const orderIndex = orders.findIndex(o => o.id === orderId);
+                        if (orderIndex !== -1) {
+                            orders[orderIndex] = result.order;
+                        }
+                        await viewOrderDetails(orderId);
+                        await loadOrders();
+                        await updateDashboard();
+                        showToast('Delivery status reversed', 'success');
+                    } else {
+                        showToast('Failed to reverse delivery', 'error');
+                    }
+                } catch (err) {
+                    showToast('Error: ' + err.message, 'error');
+                } finally {
+                    showLoadingOverlay(false);
+                }
+            });
+        }
+
+        async function reversePayment(orderId) {
+            showConfirmModal('Reverse payment status? Order will be pending payment again.', async () => {
+                showLoadingOverlay();
+                try {
+                    const response = await fetch(`${API_BASE}/orders/${orderId}`, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ paymentDone: false })
+                    });
+
+                    if (response.ok) {
+                        const result = await response.json();
+                        const orderIndex = orders.findIndex(o => o.id === orderId);
+                        if (orderIndex !== -1) {
+                            orders[orderIndex] = result.order;
+                        }
+                        await viewOrderDetails(orderId);
+                        await loadOrders();
+                        await updateDashboard();
+                        showToast('Payment status reversed', 'success');
+                    } else {
+                        showToast('Failed to reverse payment', 'error');
+                    }
+                } catch (err) {
+                    showToast('Error: ' + err.message, 'error');
+                } finally {
+                    showLoadingOverlay(false);
+                }
+            });
+        }
+
+        async function cancelOrder(orderId) {
+            showConfirmModal('Cancel this order? You can reopen it later.', async () => {
+                showLoadingOverlay();
+
+                try {
+                    const response = await fetch(`${API_BASE}/orders/${orderId}`, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ status: 'cancelled' })
+                    });
+
+                    if (response.ok) {
+                        const result = await response.json();
+                        const orderIndex = orders.findIndex(o => o.id === orderId);
+                        if (orderIndex !== -1) {
+                            orders[orderIndex] = result.order;
+                        }
+                        await viewOrderDetails(orderId);
+                        await loadOrders();
+                        await updateDashboard();
+                        showToast('Order cancelled', 'success');
+                    } else {
+                        showToast('Failed to cancel order', 'error');
+                    }
+                } catch (err) {
+                    showToast('Error: ' + err.message, 'error');
+                } finally {
+                    showLoadingOverlay(false);
+                }
+            });
+        }
+
+        async function reopenOrder(orderId) {
+            if (confirm('Are you sure you want to reopen this order?')) {
+                try {
+                    const response = await fetch(`${API_BASE}/orders/${orderId}`, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ status: 'open' })
+                    });
+
+                    if (response.ok) {
+                        const result = await response.json();
+                        const orderIndex = orders.findIndex(o => o.id === orderId);
+                        if (orderIndex !== -1) {
+                            orders[orderIndex] = result.order;
+                        }
+                        await viewOrderDetails(orderId);
+                        await loadOrders();
+                        await updateDashboard();
+                    }
+                } catch (err) {
+                    alert('Error: ' + err.message);
+                }
+            }
+        }
+
+        async function directCloseOrder(orderId) {
+            showLoadingOverlay();
+            try {
+                const response = await fetch(`${API_BASE}/orders/${orderId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ deliveryDone: true, paymentDone: true })
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    const orderIndex = orders.findIndex(o => o.id === orderId);
+                    if (orderIndex !== -1) {
+                        orders[orderIndex] = result.order;
+                    }
+                    await viewOrderDetails(orderId);
+                    await loadOrders();
+                    await updateDashboard();
+                    showToast('Order closed ✓ (Delivery + Payment marked done)', 'success');
+                } else {
+                    showToast('Failed to close order', 'error');
+                }
+            } catch (err) {
+                showToast('Error: ' + err.message, 'error');
+            } finally {
+                showLoadingOverlay(false);
+            }
+        }
+
+        async function deleteOrder(orderId) {
+            showConfirmModal('Delete this order? This action cannot be undone.', async () => {
+                showLoadingOverlay();
+                try {
+                    const response = await fetch(`${API_BASE}/orders/${orderId}`, {
+                        method: 'DELETE'
+                    });
+
+                    if (response.ok) {
+                        closeModal();
+                        await loadOrders();
+                        await updateDashboard();
+                        showToast('Order deleted successfully', 'success');
+                    } else {
+                        showToast('Failed to delete order', 'error');
+                    }
+                } catch (err) {
+                    showToast('Error: ' + err.message, 'error');
+                } finally {
+                    showLoadingOverlay(false);
+                }
+            });
+        }
+
+        function closeModal() {
+            document.getElementById('orderModal').classList.remove('show');
+        }
+
+        // Dashboard
+        async function updateDashboard() {
+            try {
+                const response = await fetch(`${API_BASE}/orders`);
+                const allOrders = await response.json();
+
+                // Exclude cancelled orders from counts
+                const activeOrders = allOrders.filter(o => o.status !== 'cancelled');
+
+                const closedOrders = activeOrders.filter(o => o.deliveryDone && o.paymentDone);
+                const openOrders = activeOrders.filter(o => !o.deliveryDone || !o.paymentDone);
+                const pendingDelivery = activeOrders.filter(o => !o.deliveryDone && o.paymentDone);
+                const pendingPayment = activeOrders.filter(o => o.deliveryDone && !o.paymentDone);
+
+                const totalRevenue = closedOrders.reduce((sum, o) => sum + o.total, 0);
+                const totalCost = closedOrders.reduce((sum, o) => sum + o.cost, 0);
+                const totalProfit = totalRevenue - totalCost;
+                const profitMargin = totalRevenue > 0 ? ((totalProfit / totalRevenue) * 100).toFixed(1) : 0;
+
+                document.getElementById('totalRevenue').textContent = '₹' + totalRevenue.toFixed(2);
+                document.getElementById('totalCost').textContent = '₹' + totalCost.toFixed(2);
+                document.getElementById('totalProfit').textContent = '₹' + totalProfit.toFixed(2);
+                document.getElementById('profitMargin').textContent = profitMargin + '%';
+                document.getElementById('openOrders').textContent = openOrders.length;
+                document.getElementById('closedOrders').textContent = closedOrders.length;
+                document.getElementById('pendingDelivery').textContent = pendingDelivery.length;
+                document.getElementById('pendingPayment').textContent = pendingPayment.length;
+
+                // Load financial summary sections if enabled
+                if (enabledFeatures.growthTrends) {
+                    const monthlyData = generateMonthlyBreakdown(closedOrders);
+                    generateGrowthTrends(monthlyData);
+                }
+                if (enabledFeatures.productPerformance) {
+                    generateProductPerformance(closedOrders);
+                }
+                if (enabledFeatures.topSelling) {
+                    loadTopProducts();
+                }
+                if (enabledFeatures.monthlyRevenue) {
+                    loadMonthlyRevenue();
+                }
+            } catch (err) {
+                console.error('Error updating dashboard:', err);
+            }
+        }
+
+        function generateMonthlyBreakdown(closedOrders) {
+            const monthlyData = {};
+
+            closedOrders.forEach(order => {
+                const date = new Date(order.createdAt);
+                const monthKey = date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0');
+                const monthName = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+
+                if (!monthlyData[monthKey]) {
+                    monthlyData[monthKey] = {
+                        monthName: monthName,
+                        orders: 0,
+                        revenue: 0,
+                        cost: 0
+                    };
+                }
+
+                monthlyData[monthKey].orders++;
+                monthlyData[monthKey].revenue += order.total;
+                monthlyData[monthKey].cost += order.cost;
+            });
+
+            // Populate monthly revenue table in financial summary
+            const revenueTable = document.getElementById('monthlyRevenueTable');
+            if (revenueTable) {
+                revenueTable.innerHTML = '';
+
+                const sortedMonths = Object.keys(monthlyData).sort().reverse();
+                if (sortedMonths.length === 0) {
+                    revenueTable.innerHTML = '<tr><td colspan="6" style="text-align: center; color: #999;">No data yet</td></tr>';
+                } else {
+                    sortedMonths.forEach(monthKey => {
+                        const data = monthlyData[monthKey];
+                        const profit = data.revenue - data.cost;
+                        const margin = data.revenue > 0 ? ((profit / data.revenue) * 100).toFixed(1) : 0;
+
+                        revenueTable.innerHTML += `
+                            <tr>
+                                <td>${data.monthName}</td>
+                                <td>${data.orders}</td>
+                                <td>₹${data.revenue.toFixed(2)}</td>
+                                <td>₹${data.cost.toFixed(2)}</td>
+                                <td>₹${profit.toFixed(2)}</td>
+                                <td>${margin}%</td>
+                            </tr>
+                        `;
+                    });
+                }
+            }
+
+            // Also populate the original monthly breakdown table if it exists
+            const tbody = document.getElementById('monthlyBreakdown');
+            if (tbody) {
+                tbody.innerHTML = '';
+
+                Object.keys(monthlyData).sort().reverse().forEach(monthKey => {
+                    const data = monthlyData[monthKey];
+                    const profit = data.revenue - data.cost;
+                    const margin = data.revenue > 0 ? ((profit / data.revenue) * 100).toFixed(1) : 0;
+
+                    tbody.innerHTML += `
+                        <tr>
+                            <td>${data.monthName}</td>
+                            <td>${data.orders}</td>
+                            <td>₹${data.revenue.toFixed(2)}</td>
+                            <td>₹${data.cost.toFixed(2)}</td>
+                            <td>₹${profit.toFixed(2)}</td>
+                            <td>${margin}%</td>
+                        </tr>
+                    `;
+                });
+
+                if (Object.keys(monthlyData).length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: #999;">No closed orders yet</td></tr>';
+                }
+            }
+
+            return monthlyData;
+        }
+
+        let enabledFeatures = { growthTrends: false, productPerformance: false, topSelling: false, monthlyRevenue: false };
+
+        function loadEnabledFeatures() {
+            // Features are now loaded from settings in loadOwnerName()
+            updateFeatureCheckboxes();
+        }
+
+        async function toggleFeature(feature) {
+            enabledFeatures[feature] = !enabledFeatures[feature];
+            updateFeatureSections();
+            updateFeatureCheckboxes();
+
+            // Save to backend silently
+            try {
+                await fetch(`${API_BASE}/settings`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ enabledFeatures: enabledFeatures })
+                });
+                // Reload dashboard data to populate the newly enabled sections
+                await updateDashboard();
+            } catch (err) {
+                console.error('Error saving feature preferences:', err);
+            }
+        }
+
+        function updateFeatureSections() {
+            const growthSection = document.getElementById('growthTrendsSection');
+            const perfSection = document.getElementById('productPerfSection');
+            const topSellingSection = document.getElementById('topSellingSection');
+            const monthlySection = document.getElementById('monthlyRevenueSection');
+
+            if (growthSection) growthSection.style.display = enabledFeatures.growthTrends ? 'block' : 'none';
+            if (perfSection) perfSection.style.display = enabledFeatures.productPerformance ? 'block' : 'none';
+            if (topSellingSection) topSellingSection.style.display = enabledFeatures.topSelling ? 'block' : 'none';
+            if (monthlySection) monthlySection.style.display = enabledFeatures.monthlyRevenue ? 'block' : 'none';
+        }
+
+        function updateFeatureCheckboxes() {
+            const growthCheckbox = document.getElementById('growthTrendsCheckbox');
+            const perfCheckbox = document.getElementById('productPerfCheckbox');
+            const topSellingCheckbox = document.getElementById('topSellingCheckbox');
+            const monthlyRevenueCheckbox = document.getElementById('monthlyRevenueCheckbox');
+            if (growthCheckbox) growthCheckbox.checked = enabledFeatures.growthTrends;
+            if (perfCheckbox) perfCheckbox.checked = enabledFeatures.productPerformance;
+            if (topSellingCheckbox) topSellingCheckbox.checked = enabledFeatures.topSelling;
+            if (monthlyRevenueCheckbox) monthlyRevenueCheckbox.checked = enabledFeatures.monthlyRevenue;
+        }
+
+        function updateFeatureSections() {
+            const growthSection = document.getElementById('growthTrendsSection');
+            const perfSection = document.getElementById('productPerfSection');
+            const topSellingSection = document.getElementById('topSellingSection');
+            const monthlySection = document.getElementById('monthlyRevenueSection');
+
+            if (growthSection) growthSection.style.display = enabledFeatures.growthTrends ? 'block' : 'none';
+            if (perfSection) perfSection.style.display = enabledFeatures.productPerformance ? 'block' : 'none';
+            if (topSellingSection) topSellingSection.style.display = enabledFeatures.topSelling ? 'block' : 'none';
+            if (monthlySection) monthlySection.style.display = enabledFeatures.monthlyRevenue ? 'block' : 'none';
+        }
+
+        function showFinancialSettingsModal() {
+            updateFeatureCheckboxes();
+            document.getElementById('financialSettingsModal').classList.add('show');
+        }
+
+        function closeFinancialSettingsModal() {
+            document.getElementById('financialSettingsModal').classList.remove('show');
+            showToast('Settings saved', 'success');
+        }
+
+        // ===== STOCK MANAGEMENT =====
+        let currentStockProductId = null;
+
+        function showManageStockModal(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            currentStockProductId = productId;
+            document.getElementById('stockProductName').textContent = product.name;
+            document.getElementById('currentStockDisplay').textContent = (product.stock || 0);
+            document.getElementById('stockChangeAmount').value = '';
+            document.getElementById('stockSetAmount').value = '';
+            document.getElementById('stockError').style.display = 'none';
+
+            document.getElementById('manageStockModal').classList.add('show');
+        }
+
+        function closeManageStockModal() {
+            document.getElementById('manageStockModal').classList.remove('show');
+            currentStockProductId = null;
+        }
+
+        async function adjustStock(action) {
+            const amount = parseInt(document.getElementById('stockChangeAmount').value);
+            const errorEl = document.getElementById('stockError');
+            errorEl.style.display = 'none';
+
+            if (!amount || amount <= 0) {
+                errorEl.textContent = 'Please enter a valid quantity';
+                errorEl.style.display = 'block';
+                return;
+            }
+
+            const product = products.find(p => p.id === currentStockProductId);
+            if (!product) return;
+
+            const newStock = action === 'add' ? (product.stock || 0) + amount : (product.stock || 0) - amount;
+
+            if (newStock < 0) {
+                errorEl.textContent = 'Stock cannot be negative';
+                errorEl.style.display = 'block';
+                return;
+            }
+
+            showLoadingOverlay();
+            try {
+                const response = await fetch(`${API_BASE}/products/${currentStockProductId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ stock: newStock })
+                });
+
+                if (response.ok) {
+                    document.getElementById('currentStockDisplay').textContent = newStock;
+                    document.getElementById('stockChangeAmount').value = '';
+                    showToast(`Stock ${action === 'add' ? 'added' : 'removed'} successfully`, 'success');
+                    await loadProducts();
+                } else {
+                    showToast('Failed to update stock', 'error');
+                }
+            } catch (err) {
+                showToast('Error: ' + err.message, 'error');
+            } finally {
+                showLoadingOverlay(false);
+            }
+        }
+
+        async function setStockExact() {
+            const amount = parseInt(document.getElementById('stockSetAmount').value);
+            const errorEl = document.getElementById('stockError');
+            errorEl.style.display = 'none';
+
+            if (amount === null || amount === undefined || amount < 0) {
+                errorEl.textContent = 'Please enter a valid stock amount';
+                errorEl.style.display = 'block';
+                return;
+            }
+
+            showLoadingOverlay();
+            try {
+                const response = await fetch(`${API_BASE}/products/${currentStockProductId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ stock: amount })
+                });
+
+                if (response.ok) {
+                    document.getElementById('currentStockDisplay').textContent = amount;
+                    document.getElementById('stockSetAmount').value = '';
+                    showToast('Stock updated successfully', 'success');
+                    await loadProducts();
+                } else {
+                    showToast('Failed to update stock', 'error');
+                }
+            } catch (err) {
+                showToast('Error: ' + err.message, 'error');
+            } finally {
+                showLoadingOverlay(false);
+            }
+        }
+
+        // ===== CUSTOMER MANAGEMENT =====
+        let currentEditCustomerId = null;
+
+        async function loadCustomersTable() {
+            try {
+                const response = await fetch(`${API_BASE}/customers`);
+                const customers = await response.json();
+                allCustomers = [...customers];
+                displayCustomersTable(customers);
+            } catch (err) {
+                console.error('Error loading customers:', err);
+            }
+        }
+
+        function displayCustomersTable(customersToDisplay) {
+            const tbody = document.getElementById('customersList');
+            tbody.innerHTML = '';
+
+            if (customersToDisplay.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: #999;">No customers found</td></tr>';
+                return;
+            }
+
+            customersToDisplay.forEach(customer => {
+                const orderCount = orders.filter(o => o.customerId === customer.id).length;
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${customer.name}</td>
+                        <td>${customer.phone}</td>
+                        <td>${customer.address}</td>
+                        <td>${orderCount}</td>
+                        <td>
+                            <button class="btn-primary" onclick="editCustomer(${customer.id})" style="margin-right: 5px;">Edit</button>
+                            <button class="btn-danger" onclick="confirmDeleteCustomer(${customer.id})">Delete</button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        function searchCustomers() {
+            const searchInput = document.getElementById('customerSearchInput2').value.toLowerCase();
+
+            if (searchInput.length === 0) {
+                displayCustomersTable(allCustomers);
+                return;
+            }
+
+            const filtered = allCustomers.filter(customer =>
+                customer.name.toLowerCase().includes(searchInput) ||
+                customer.phone.toLowerCase().includes(searchInput) ||
+                customer.address.toLowerCase().includes(searchInput)
+            );
+
+            displayCustomersTable(filtered);
+        }
+
+        function editCustomer(id) {
+            const customer = allCustomers.find(c => c.id === id);
+            if (!customer) return;
+
+            currentEditCustomerId = id;
+            document.getElementById('editCustomerName').value = customer.name;
+            document.getElementById('editCustomerPhone').value = customer.phone;
+            document.getElementById('editCustomerAddress').value = customer.address;
+            document.getElementById('editCustomerError').style.display = 'none';
+
+            document.getElementById('editCustomerModal').classList.add('show');
+            document.getElementById('editCustomerName').focus();
+        }
+
+        function closeEditCustomerModal() {
+            document.getElementById('editCustomerModal').classList.remove('show');
+            currentEditCustomerId = null;
+        }
+
+        // ===== ANALYTICS =====
+        function loadAnalytics() {
+            if (document.querySelector('.tab-content.active')?.id === 'analytics') {
+                loadCustomerHistoryDropdown();
+            }
+        }
+
+        function loadTopProducts() {
+            const productSales = {};
+
+            orders.filter(o => o.deliveryDone).forEach(order => {
+                order.items.forEach(item => {
+                    if (!productSales[item.productId]) {
+                        productSales[item.productId] = {
+                            name: item.productName,
+                            quantity: 0,
+                            revenue: 0,
+                            cost: 0
+                        };
+                    }
+                    productSales[item.productId].quantity += item.quantity;
+                    productSales[item.productId].revenue += item.price * item.quantity;
+                    productSales[item.productId].cost += item.cost * item.quantity;
+                });
+            });
+
+            const sorted = Object.values(productSales)
+                .sort((a, b) => b.revenue - a.revenue)
+                .slice(0, 10);
+
+            const tbody = document.getElementById('topProductsFinancial');
+            tbody.innerHTML = '';
+
+            if (sorted.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: #999;">No sales data yet</td></tr>';
+                return;
+            }
+
+            sorted.forEach((product, index) => {
+                const profit = product.revenue - product.cost;
+                tbody.innerHTML += `
+                    <tr>
+                        <td><strong>${index + 1}. ${product.name}</strong></td>
+                        <td>${product.quantity} units</td>
+                        <td>₹${product.revenue.toFixed(2)}</td>
+                        <td>₹${profit.toFixed(2)}</td>
+                    </tr>
+                `;
+            });
+        }
+
+        function loadMonthlyRevenue() {
+            const monthlyData = {};
+            const now = new Date();
+
+            orders.filter(o => o.deliveryDone && o.paymentDone).forEach(order => {
+                const date = new Date(order.createdAt);
+                const monthKey = date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0');
+                if (!monthlyData[monthKey]) {
+                    monthlyData[monthKey] = 0;
+                }
+                monthlyData[monthKey] += order.total;
+            });
+
+            const months = Object.keys(monthlyData).sort();
+            if (months.length === 0) {
+                document.getElementById('monthlyRevenueChartFinancial').innerHTML = '<p style="text-align: center; color: #999; padding: 40px 0;">No data available</p>';
+                return;
+            }
+
+            const maxRevenue = Math.max(...Object.values(monthlyData));
+            const chartHeight = 250;
+            const barWidth = Math.max(40, Math.floor(600 / months.length));
+
+            let html = `<div style="display: flex; align-items: flex-end; gap: 10px; overflow-x: auto; padding: 20px 0;">`;
+
+            months.forEach(month => {
+                const revenue = monthlyData[month];
+                const height = (revenue / maxRevenue) * chartHeight;
+                const [year, monthNum] = month.split('-');
+                const monthName = new Date(year, monthNum - 1).toLocaleDateString('en', { month: 'short', year: '2-digit' });
+
+                html += `
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+                        <div style="text-align: center; font-weight: 600; font-size: 0.85em;">₹${(revenue / 1000).toFixed(1)}K</div>
+                        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); width: ${barWidth}px; height: ${height}px; border-radius: 4px 4px 0 0;"></div>
+                        <div style="text-align: center; font-size: 0.8em; color: #666; min-width: ${barWidth}px;">${monthName}</div>
+                    </div>
+                `;
+            });
+
+            html += `</div>`;
+            document.getElementById('monthlyRevenueChartFinancial').innerHTML = html;
+        }
+
+        function loadCustomerHistoryDropdown() {
+            const select = document.getElementById('customerHistorySelect');
+            select.innerHTML = '<option value="">-- Select Customer --</option>';
+
+            allCustomers.sort((a, b) => a.name.localeCompare(b.name)).forEach(customer => {
+                const option = document.createElement('option');
+                option.value = customer.id;
+                option.textContent = `${customer.name} (${customer.phone})`;
+                select.appendChild(option);
+            });
+        }
+
+        function showCustomerHistory() {
+            const customerId = parseInt(document.getElementById('customerHistorySelect').value);
+            if (!customerId) {
+                document.getElementById('customerHistoryDetails').style.display = 'none';
+                return;
+            }
+
+            const customer = allCustomers.find(c => c.id === customerId);
+            const customerOrders = orders.filter(o => o.customerId === customerId);
+
+            if (customerOrders.length === 0) {
+                document.getElementById('customerHistoryDetails').style.display = 'none';
+                return;
+            }
+
+            const totalSpending = customerOrders.reduce((sum, o) => sum + o.total, 0);
+            const avgValue = (totalSpending / customerOrders.length).toFixed(2);
+
+            document.getElementById('customerTotalOrders').textContent = customerOrders.length;
+            document.getElementById('customerTotalSpending').textContent = '₹' + totalSpending.toFixed(2);
+            document.getElementById('customerAvgValue').textContent = '₹' + avgValue;
+
+            const tbody = document.getElementById('customerHistoryTable');
+            tbody.innerHTML = '';
+
+            customerOrders.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).forEach(order => {
+                const date = new Date(order.createdAt).toLocaleDateString();
+                const itemCount = order.items.length;
+                const status = order.deliveryDone && order.paymentDone ? 'Closed' : order.deliveryDone ? 'Delivered' : 'Pending';
+                const statusColor = order.deliveryDone && order.paymentDone ? '#2f9e44' : order.deliveryDone ? '#f59f00' : '#ff6b6b';
+
+                tbody.innerHTML += `
+                    <tr>
+                        <td><strong>#${order.id}</strong></td>
+                        <td>${date}</td>
+                        <td>${itemCount} item${itemCount > 1 ? 's' : ''}</td>
+                        <td>₹${order.total.toFixed(2)}</td>
+                        <td><span style="color: ${statusColor}; font-weight: 600;">${status}</span></td>
+                    </tr>
+                `;
+            });
+
+            document.getElementById('customerHistoryDetails').style.display = 'block';
+        }
+
+        async function saveCustomerEdit() {
+            const name = document.getElementById('editCustomerName').value.trim();
+            const phone = document.getElementById('editCustomerPhone').value.trim();
+            const address = document.getElementById('editCustomerAddress').value.trim();
+            const errorEl = document.getElementById('editCustomerError');
+
+            errorEl.style.display = 'none';
+
+            if (!name || !phone || !address) {
+                errorEl.textContent = 'Please fill all fields';
+                errorEl.style.display = 'block';
+                return;
+            }
+
+            showLoadingOverlay();
+            try {
+                const response = await fetch(`${API_BASE}/customers/${currentEditCustomerId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, phone, address })
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    closeEditCustomerModal();
+                    await loadCustomers();
+                    await loadCustomersTable();
+                    showToast('Customer updated successfully', 'success');
+                } else {
+                    errorEl.textContent = result.error || 'Failed to update customer';
+                    errorEl.style.display = 'block';
+                }
+            } catch (err) {
+                errorEl.textContent = 'Error: ' + err.message;
+                errorEl.style.display = 'block';
+            } finally {
+                showLoadingOverlay(false);
+            }
+        }
+
+        function confirmDeleteCustomer(id) {
+            const customer = allCustomers.find(c => c.id === id);
+            if (!customer) return;
+
+            showConfirmModal(`Delete customer "${customer.name}"?`, async () => {
+                showLoadingOverlay();
+                try {
+                    const response = await fetch(`${API_BASE}/customers/${id}`, { method: 'DELETE' });
+                    if (response.ok) {
+                        await loadCustomers();
+                        await loadCustomersTable();
+                        showToast('Customer deleted', 'success');
+                    } else {
+                        showToast('Failed to delete customer', 'error');
+                    }
+                } catch (err) {
+                    showToast('Error: ' + err.message, 'error');
+                } finally {
+                    showLoadingOverlay(false);
+                }
+            });
+        }
+
+        function showResetDataModal() {
+            document.getElementById('resetMasterPin').value = '';
+            document.getElementById('resetPinError').style.display = 'none';
+            document.getElementById('resetDataModal').classList.add('show');
+            document.getElementById('resetMasterPin').focus();
+        }
+
+        function closeResetDataModal() {
+            document.getElementById('resetDataModal').classList.remove('show');
+        }
+
+        async function executeReset() {
+            const masterPin = document.getElementById('resetMasterPin').value.trim();
+            const errorEl = document.getElementById('resetPinError');
+
+            if (!masterPin) {
+                errorEl.textContent = 'Please enter the master PIN';
+                errorEl.style.display = 'block';
+                return;
+            }
+
+            // Verify master PIN
+            if (masterPin !== MASTER_PIN) {
+                errorEl.textContent = 'Invalid master PIN';
+                errorEl.style.display = 'block';
+                return;
+            }
+
+            // Double check with confirmation
+            showConfirmModal('⚠️ This will delete ALL data. Are you absolutely sure?', async () => {
+                showLoadingOverlay();
+                try {
+                    const response = await fetch(`${API_BASE}/reset-all`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ masterPin: MASTER_PIN })
+                    });
+
+                    const result = await response.json();
+                    if (result.success) {
+                        showToast('All data has been reset. Reloading...', 'success');
+                        // Reload page after a short delay to show the toast
+                        setTimeout(() => {
+                            location.href = '/';
+                        }, 1000);
+                    } else {
+                        showLoadingOverlay(false);
+                        showToast(result.error || 'Failed to reset data', 'error');
+                    }
+                } catch (err) {
+                    showLoadingOverlay(false);
+                    showToast('Error: ' + err.message, 'error');
+                }
+            });
+        }
+
+        function generateGrowthTrends(monthlyData) {
+            const months = Object.keys(monthlyData).sort();
+            const tbody = document.getElementById('growthTrendsTable');
+
+            if (!tbody) return;
+
+            tbody.innerHTML = '';
+
+            if (months.length < 2) {
+                tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: #999;">Need at least 2 months of data</td></tr>';
+                return;
+            }
+
+            for (let i = 1; i < months.length; i++) {
+                const prevMonth = monthlyData[months[i - 1]];
+                const currMonth = monthlyData[months[i]];
+
+                const revenueGrowth = prevMonth.revenue > 0
+                    ? (((currMonth.revenue - prevMonth.revenue) / prevMonth.revenue) * 100).toFixed(1)
+                    : 0;
+
+                const trend = revenueGrowth > 0 ? `↑ +${revenueGrowth}%` : revenueGrowth < 0 ? `↓ ${revenueGrowth}%` : '→ 0%';
+
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${prevMonth.monthName} → ${currMonth.monthName}</td>
+                        <td>${currMonth.orders}</td>
+                        <td>₹${currMonth.revenue.toFixed(2)}</td>
+                        <td><strong>${trend}</strong></td>
+                    </tr>
+                `;
+            }
+        }
+
+        function generateProductPerformance(closedOrders) {
+            const productData = {};
+
+            closedOrders.forEach(order => {
+                order.items.forEach(item => {
+                    if (!productData[item.productName]) {
+                        productData[item.productName] = {
+                            units: 0,
+                            revenue: 0,
+                            cost: 0
+                        };
+                    }
+                    productData[item.productName].units += item.quantity;
+                    productData[item.productName].revenue += item.price * item.quantity;
+                    productData[item.productName].cost += item.cost * item.quantity;
+                });
+            });
+
+            const tbody = document.getElementById('productPerfTableFinancial');
+            if (tbody) {
+                tbody.innerHTML = '';
+
+                const sortedProducts = Object.entries(productData)
+                    .sort((a, b) => b[1].revenue - a[1].revenue);
+
+                if (sortedProducts.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: #999;">No sales data yet</td></tr>';
+                    return;
+                }
+
+                sortedProducts.forEach(([productName, data]) => {
+                    const profit = data.revenue - data.cost;
+                    const margin = data.revenue > 0 ? ((profit / data.revenue) * 100).toFixed(1) : 0;
+
+                    tbody.innerHTML += `
+                        <tr>
+                            <td>${productName}</td>
+                            <td>₹${data.revenue.toFixed(2)}</td>
+                            <td>₹${data.cost.toFixed(2)}</td>
+                            <td>₹${profit.toFixed(2)}</td>
+                            <td>${margin}%</td>
+                        </tr>
+                    `;
+                });
+            }
+        }
+
+        // Close modal on outside click
+        window.onclick = function(event) {
+            const modal = document.getElementById('orderModal');
+            if (event.target == modal) {
+                modal.classList.remove('show');
+            }
+        }
+
+        // Search Orders
+        function searchOrders() {
+            currentSearchQuery = document.getElementById('orderSearch').value.toLowerCase();
+            currentPage = 1;
+            displayFilteredOrders();
+        }
+
+        function displayFilteredOrders() {
+            const tbody = document.getElementById('ordersList');
+            tbody.innerHTML = '';
+
+            let filteredOrders = orders;
+
+            // Apply status filter
+            if (currentFilter === 'open') {
+                filteredOrders = filteredOrders.filter(o => (!o.deliveryDone || !o.paymentDone) && o.status !== 'cancelled');
+            } else if (currentFilter === 'pendingDelivery') {
+                filteredOrders = filteredOrders.filter(o => !o.deliveryDone && o.paymentDone && o.status !== 'cancelled');
+            } else if (currentFilter === 'pendingPayment') {
+                filteredOrders = filteredOrders.filter(o => o.deliveryDone && !o.paymentDone && o.status !== 'cancelled');
+            } else if (currentFilter === 'closed') {
+                filteredOrders = filteredOrders.filter(o => o.deliveryDone && o.paymentDone && o.status !== 'cancelled');
+            } else {
+                filteredOrders = filteredOrders;
+            }
+
+            // Apply search filter
+            if (currentSearchQuery) {
+                filteredOrders = filteredOrders.filter(o =>
+                    o.id.toString().includes(currentSearchQuery) ||
+                    o.customerName.toLowerCase().includes(currentSearchQuery) ||
+                    o.customerPhone.includes(currentSearchQuery)
+                );
+            }
+
+            // Sort orders by ID in descending order (newest first)
+            filteredOrders.sort((a, b) => b.id - a.id);
+
+            if (filteredOrders.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: #999;">No orders found</td></tr>';
+                updatePaginationControls(0, 0);
+                return;
+            }
+
+            // Pagination
+            const totalPages = Math.ceil(filteredOrders.length / ordersPerPage);
+            if (currentPage > totalPages) {
+                currentPage = totalPages;
+            }
+            const startIdx = (currentPage - 1) * ordersPerPage;
+            const endIdx = startIdx + ordersPerPage;
+            const pageOrders = filteredOrders.slice(startIdx, endIdx);
+
+            pageOrders.forEach(order => {
+                const status = order.status === 'cancelled' ? '<span class="badge badge-danger">CANCELLED</span>' : getOrderStatus(order);
+                const deliveryBadge = order.deliveryDone ? '<span class="badge badge-success">✓ Done</span>' : '<span class="badge badge-warning">Pending</span>';
+                const paymentBadge = order.paymentDone ? '<span class="badge badge-success">✓ Done</span>' : '<span class="badge badge-warning">Pending</span>';
+
+                tbody.innerHTML += `
+                    <tr ${order.status === 'cancelled' ? 'style="opacity: 0.6;"' : ''}>
+                        <td>#${order.id}</td>
+                        <td>${order.customerName}</td>
+                        <td>₹${order.total.toFixed(2)}</td>
+                        <td>${status}</td>
+                        <td>${deliveryBadge}</td>
+                        <td>${paymentBadge}</td>
+                        <td>
+                            <button class="btn-primary" onclick="viewOrderDetails(${order.id})">View</button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            updatePaginationControls(currentPage, totalPages);
+        }
+
+        function updatePaginationControls(currentPageNum, totalPages) {
+            const paginationDiv = document.getElementById('ordersPagination');
+            if (!paginationDiv) return;
+
+            if (totalPages === 0) {
+                paginationDiv.innerHTML = '';
+                return;
+            }
+
+            let html = `<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding: 15px; background: #f8f7fc; border-radius: 8px;">
+                <button class="btn-secondary" onclick="previousOrderPage()" ${currentPageNum === 1 ? 'disabled' : ''}>← Previous</button>
+                <span style="font-weight: 500;">Page ${currentPageNum} of ${totalPages}</span>
+                <button class="btn-secondary" onclick="nextOrderPage()" ${currentPageNum === totalPages ? 'disabled' : ''}>Next →</button>
+            </div>`;
+
+            paginationDiv.innerHTML = html;
+        }
+
+        function nextOrderPage() {
+            currentPage++;
+            displayFilteredOrders();
+        }
+
+        function previousOrderPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                displayFilteredOrders();
+            }
+        }
+
+        // Invoice Generation
+        function generateInvoiceText(order) {
+            const line = '─'.repeat(50);
+            const date = new Date(order.createdAt).toLocaleDateString();
+
+            let invoiceText = `\n${line}
+          KASHMIR CRAFTS - INVOICE
+${line}\n`;
+
+            invoiceText += `Order ID: #${order.id}
+Date: ${date}\n`;
+            invoiceText += `${line}\n`;
+
+            invoiceText += `CUSTOMER DETAILS:
+Name: ${order.customerName}
+Phone: ${order.customerPhone}
+Address: ${order.customerAddress}\n`;
+            invoiceText += `${line}\n`;
+
+            invoiceText += `ITEMS ORDERED:\n`;
+            let subtotal = 0;
+            order.items.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                invoiceText += `${item.productName}
+  Qty: ${item.quantity} × ₹${item.price.toFixed(2)} = ₹${itemTotal.toFixed(2)}\n\n`;
+            });
+
+            invoiceText += `${line}\n`;
+            invoiceText += `Subtotal:           ₹${subtotal.toFixed(2)}\n`;
+            if (order.additionalCharges) {
+                invoiceText += `Additional Charges: ₹${order.additionalCharges.toFixed(2)}\n`;
+            }
+            invoiceText += `${'─'.repeat(30)}\n`;
+            invoiceText += `TOTAL AMOUNT:       ₹${order.total.toFixed(2)}\n`;
+            invoiceText += `${line}\n\n`;
+
+            invoiceText += `Thank you for your order!
+Please share this invoice for your records.\n`;
+            invoiceText += `${line}\n`;
+
+            return invoiceText;
+        }
+
+        function generateAndShowInvoice(order) {
+            const invoiceText = generateInvoiceText(order);
+            document.getElementById('invoiceContent').textContent = invoiceText;
+            document.getElementById('invoiceModal').classList.add('show');
+        }
+
+        function closeInvoiceModal() {
+            document.getElementById('invoiceModal').classList.remove('show');
+        }
+
+        function copyInvoiceToClipboard() {
+            const invoiceText = document.getElementById('invoiceContent').textContent;
+            navigator.clipboard.writeText(invoiceText).then(() => {
+                alert('Invoice copied to clipboard!');
+            }).catch(err => {
+                alert('Failed to copy invoice');
+            });
+        }
+
+        // PIN Functions
+        function showPinSetupModal() {
+            document.getElementById('pinSetupInput').value = '';
+            document.getElementById('pinSetupError').style.display = 'none';
+            document.getElementById('pinSetupModal').classList.add('show');
+            document.getElementById('pinSetupInput').focus();
+        }
+
+        function closePinSetupModal() {
+            document.getElementById('pinSetupModal').classList.remove('show');
+        }
+
+        async function savePinSetup() {
+            const pin = document.getElementById('pinSetupInput').value.trim();
+            const errorEl = document.getElementById('pinSetupError');
+
+            errorEl.style.display = 'none';
+
+            if (!pin || pin.length < 4) {
+                errorEl.textContent = 'PIN must be at least 4 digits';
+                errorEl.style.display = 'block';
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE}/pin/setup`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ pin })
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    pinSet = true;
+                    pinSkipped = false;
+                    pinVerified = true;
+                    closePinSetupModal();
+                    if (pendingTab) {
+                        activateTab(pendingTab);
+                        pendingTab = null;
+                    }
+                } else {
+                    errorEl.textContent = result.error || 'Failed to set PIN';
+                    errorEl.style.display = 'block';
+                }
+            } catch (err) {
+                errorEl.textContent = 'Error: ' + err.message;
+                errorEl.style.display = 'block';
+            }
+        }
+
+        async function skipPinSetup() {
+            try {
+                const response = await fetch(`${API_BASE}/pin/skip`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    pinSkipped = true;
+                    closePinSetupModal();
+                    if (pendingTab) {
+                        activateTab(pendingTab);
+                        pendingTab = null;
+                    }
+                }
+            } catch (err) {
+                console.error('Error skipping PIN setup:', err);
+            }
+        }
+
+        function showPinVerifyModal() {
+            document.getElementById('pinVerifyInput').value = '';
+            document.getElementById('pinVerifyError').style.display = 'none';
+            document.getElementById('pinVerifyModal').classList.add('show');
+            document.getElementById('pinVerifyInput').focus();
+        }
+
+        function closePinVerifyModal() {
+            document.getElementById('pinVerifyModal').classList.remove('show');
+        }
+
+        async function verifyPin() {
+            const pin = document.getElementById('pinVerifyInput').value.trim();
+            const errorEl = document.getElementById('pinVerifyError');
+
+            errorEl.style.display = 'none';
+
+            if (!pin) {
+                errorEl.textContent = 'Please enter PIN';
+                errorEl.style.display = 'block';
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE}/pin/verify`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ pin })
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    pinVerified = true;
+                    const tabToActivate = pendingTab;
+                    closePinVerifyModal();
+                    if (tabToActivate) {
+                        activateTab(tabToActivate);
+                        pendingTab = null;
+                    }
+                } else {
+                    errorEl.textContent = result.error || 'Invalid PIN';
+                    errorEl.style.display = 'block';
+                    document.getElementById('pinVerifyInput').value = '';
+                }
+            } catch (err) {
+                errorEl.textContent = 'Error: ' + err.message;
+                errorEl.style.display = 'block';
+            }
+        }
+
+        function showForgotPinModal() {
+            document.getElementById('forgotPinModal').classList.add('show');
+            document.getElementById('masterPinInput').value = '';
+            document.getElementById('newPinInput').value = '';
+            document.getElementById('forgotPinError').style.display = 'none';
+            document.getElementById('masterPinInput').focus();
+        }
+
+        function closeForgotPinModal() {
+            document.getElementById('forgotPinModal').classList.remove('show');
+            closePinVerifyModal();
+        }
+
+        async function resetPinWithMaster() {
+            const masterPin = document.getElementById('masterPinInput').value.trim();
+            const newPin = document.getElementById('newPinInput').value.trim();
+            const errorEl = document.getElementById('forgotPinError');
+
+            errorEl.style.display = 'none';
+
+            if (!masterPin) {
+                errorEl.textContent = 'Please enter master PIN';
+                errorEl.style.display = 'block';
+                return;
+            }
+
+            if (!newPin || newPin.length < 4) {
+                errorEl.textContent = 'New PIN must be at least 4 digits';
+                errorEl.style.display = 'block';
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE}/pin/reset-with-master`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ masterPin, newPin })
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    pinSet = true;
+                    pinSkipped = false;
+                    pinVerified = true;
+                    closeForgotPinModal();
+                    if (pendingTab) {
+                        activateTab(pendingTab);
+                        pendingTab = null;
+                    }
+                } else {
+                    errorEl.textContent = result.error || 'Failed to reset PIN';
+                    errorEl.style.display = 'block';
+                }
+            } catch (err) {
+                errorEl.textContent = 'Error: ' + err.message;
+                errorEl.style.display = 'block';
+            }
+        }
+
+        async function showPinSettingsModal() {
+            const content = document.getElementById('pinSettingsContent');
+            let html = '<div style="padding: 20px;">';
+
+            if (pinSet) {
+                html += `
+                    <p style="margin-bottom: 15px; color: #666;"><strong>Status:</strong> <span style="color: #51cf66; font-weight: bold;">✓ PIN Protected</span></p>
+                    <p style="margin-bottom: 20px; color: #666;">Financial Summary is protected with a PIN.</p>
+                    <p style="margin-bottom: 15px; color: #666; font-weight: 500;">To remove PIN protection, enter your current PIN:</p>
+                    <div class="form-group">
+                        <label>Current PIN</label>
+                        <input type="password" id="removePinInput" placeholder="0000" maxlength="4" style="font-size: 2em; text-align: center; letter-spacing: 10px;">
+                    </div>
+                    <div id="removePinError" class="error-message" style="display: none; margin-bottom: 15px;"></div>
+                    <div class="button-group">
+                        <button class="btn-danger" onclick="removePinProtection()">Remove PIN</button>
+                        <button class="btn-secondary" onclick="closePinSettingsModal()">Cancel</button>
+                    </div>
+                `;
+            } else {
+                html += `
+                    <p style="margin-bottom: 15px; color: #666;"><strong>Status:</strong> <span style="color: #ffd43b; font-weight: bold;">⚠ No PIN Protection</span></p>
+                    <p style="margin-bottom: 20px; color: #666;">Set a PIN to protect your financial data.</p>
+                    <div class="form-group">
+                        <label>Enter a 4-digit PIN</label>
+                        <input type="password" id="settingsPinInput" placeholder="0000" maxlength="4" style="font-size: 2em; text-align: center; letter-spacing: 10px;">
+                    </div>
+                    <div id="setupPinError" class="error-message" style="display: none; margin-bottom: 15px;"></div>
+                    <div class="button-group">
+                        <button class="btn-primary" onclick="setupPinFromSettings()">Set PIN Now</button>
+                        <button class="btn-secondary" onclick="closePinSettingsModal()">Cancel</button>
+                    </div>
+                `;
+            }
+
+            html += '</div>';
+            content.innerHTML = html;
+            document.getElementById('pinSettingsModal').classList.add('show');
+        }
+
+        function closePinSettingsModal() {
+            document.getElementById('pinSettingsModal').classList.remove('show');
+        }
+
+        async function setupPinFromSettings() {
+            const pin = document.getElementById('settingsPinInput').value.trim();
+            const errorEl = document.getElementById('setupPinError');
+
+            errorEl.style.display = 'none';
+
+            if (!pin || pin.length < 4) {
+                errorEl.textContent = 'PIN must be at least 4 digits';
+                errorEl.style.display = 'block';
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE}/pin/setup`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ pin })
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    pinSet = true;
+                    pinSkipped = false;
+                    pinVerified = true;
+                    closePinSettingsModal();
+                    alert('PIN set successfully!');
+                    showPinSettingsModal(); // Refresh the modal
+                } else {
+                    errorEl.textContent = result.error || 'Failed to set PIN';
+                    errorEl.style.display = 'block';
+                }
+            } catch (err) {
+                errorEl.textContent = 'Error: ' + err.message;
+                errorEl.style.display = 'block';
+            }
+        }
+
+        async function removePinProtection() {
+            const pin = document.getElementById('removePinInput').value.trim();
+            const errorEl = document.getElementById('removePinError');
+
+            errorEl.style.display = 'none';
+
+            if (!pin) {
+                errorEl.textContent = 'Please enter your PIN';
+                errorEl.style.display = 'block';
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE}/pin/remove`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ pin })
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    pinSet = false;
+                    pinSkipped = true;
+                    pinVerified = false;
+                    closePinSettingsModal();
+                    alert('PIN protection removed!');
+                } else {
+                    errorEl.textContent = result.error || 'Invalid PIN';
+                    errorEl.style.display = 'block';
+                }
+            } catch (err) {
+                errorEl.textContent = 'Error: ' + err.message;
+                errorEl.style.display = 'block';
+            }
+        }
+
+        // Dark Mode
+        async function toggleDarkMode() {
+            const isDarkMode = document.body.classList.toggle('dark-mode');
+            updateThemeIcon();
+
+            // Save to backend
+            try {
+                await fetch(`${API_BASE}/settings`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ darkMode: isDarkMode })
+                });
+            } catch (err) {
+                console.error('Error saving dark mode preference:', err);
+            }
+        }
+
+        function updateThemeIcon() {
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            document.getElementById('themeIcon').textContent = isDarkMode ? '☀️' : '🌙';
+        }
+
+        function initializeDarkMode() {
+            // Dark mode is now loaded from settings in loadOwnerName()
+            updateThemeIcon();
+        }
+
+        function hideSplashScreen() {
+            const splash = document.getElementById('splashScreen');
+            if (splash) {
+                splash.classList.add('hidden');
+                // Remove from DOM after animation
+                setTimeout(() => {
+                    splash.style.display = 'none';
+                }, 500);
+            }
+        }
+
+        async function updateSplashScreen() {
+            try {
+                const response = await fetch(`${API_BASE}/settings`);
+                const settings = await response.json();
+
+                const icon = settings.businessIcon || '🏺';
+                const name = settings.businessName || 'Kashmir Crafts';
+
+                document.getElementById('splashIcon').textContent = icon;
+                document.getElementById('splashTitle').textContent = name;
+            } catch (err) {
+                console.error('Error loading splash screen data:', err);
+            }
+        }
+
+        // Loading & Confirmation
+        function showLoadingOverlay(show = true) {
+            const overlay = document.getElementById('loadingOverlay');
+            if (show) {
+                overlay.classList.add('show');
+            } else {
+                overlay.classList.remove('show');
+            }
+        }
+
+        function showConfirmModal(message, onConfirm, buttonLabel = 'Confirm') {
+            document.getElementById('confirmMessage').textContent = message;
+            const confirmBtn = document.getElementById('confirmButton');
+            confirmBtn.textContent = buttonLabel;
+            confirmBtn.onclick = () => {
+                closeConfirmModal();
+                onConfirm();
+            };
+            document.getElementById('confirmationModal').classList.add('show');
+        }
+
+        function closeConfirmModal() {
+            document.getElementById('confirmationModal').classList.remove('show');
+        }
+    </script>
+</body>
+</html>

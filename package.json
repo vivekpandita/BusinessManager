@@ -1,0 +1,42 @@
+{
+  "name": "business-manager",
+  "version": "1.0.0",
+  "description": "Business Manager - Sales & Profit Tracker",
+  "main": "server.js",
+  "bin": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "build": "pkg . --node-range 20 --targets win-x64 --output dist/BusinessManager.exe",
+    "watch": "powershell -NoProfile -ExecutionPolicy Bypass -File watch-dist.ps1",
+    "sync-dist": "powershell -NoProfile -ExecutionPolicy Bypass -File watch-dist.ps1"
+  },
+  "keywords": [
+    "business",
+    "sales",
+    "orders",
+    "profit"
+  ],
+  "author": "",
+  "license": "ISC",
+  "pkg": {
+    "assets": [
+      "BusinessManager.html",
+      "data/**/*"
+    ],
+    "scripts": [
+      "server.js"
+    ],
+    "targets": [
+      "win-x64"
+    ],
+    "outputPath": "dist"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "pkg": "^5.8.1"
+  }
+}

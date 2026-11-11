@@ -1,0 +1,13 @@
+{
+  "businessName": "Kashmir Crafts",
+  "businessIcon": "🏺",
+  "businessDescription": "Premium Kashmiri Walnuts, Almonds & Handmade Dresses",
+  "ownerName": "Nishu",
+  "enabledFeatures": {
+    "growthTrends": true,
+    "productPerformance": true,
+    "topSelling": true,
+    "monthlyRevenue": true
+  },
+  "setupModalDismissed": true
+}

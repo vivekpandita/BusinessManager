@@ -1,0 +1,91 @@
+================================================================================
+  BUSINESS MANAGER - AUTO-UPDATE BUNDLE QUICK START
+================================================================================
+
+THREE WAYS TO UPDATE YOUR DISTRIBUTION FOLDER:
+
+================================================================================
+OPTION 1: CONTINUOUS WATCH (Recommended)
+================================================================================
+
+Want files to auto-update while you work?
+
+  STEP 1: Double-click "watch-dist.bat"
+  STEP 2: Leave it running while you edit files
+  STEP 3: Changes instantly copy to dist/ folder
+  STEP 4: Close the window to stop watching
+
+Or from PowerShell:
+  npm run watch
+
+Result: Any change to these files auto-copies to dist/
+  - BusinessManager.html
+  - server.js
+  - package.json
+
+================================================================================
+OPTION 2: ONE-TIME SYNC
+================================================================================
+
+Want to copy files once right now?
+
+  PowerShell:    .\sync-dist-now.ps1
+  Or npm:        npm run sync-dist
+
+Result: Files copied immediately, script closes
+
+================================================================================
+OPTION 3: MANUAL COPY
+================================================================================
+
+Copy these files to the dist/ folder yourself:
+  - BusinessManager.html
+  - server.js
+  - package.json
+
+================================================================================
+RECOMMENDED WORKFLOW:
+================================================================================
+
+1. START WATCH:
+   Double-click watch-dist.bat
+
+2. EDIT YOUR CODE:
+   Edit files in VS Code or your editor
+   (BusinessManager.html, server.js, etc)
+
+3. WATCH COPIES CHANGES:
+   Window shows "OK: filename" each time you save
+   Files auto-sync to dist/ folder
+
+4. TEST IN DIST:
+   Double-click dist/BusinessManager.bat
+   Test that your changes work
+
+5. WHEN READY TO SHARE:
+   Stop the watch (Ctrl+C)
+   Zip the dist/ folder
+   Send to users
+
+================================================================================
+FILES CREATED FOR YOU:
+================================================================================
+
+watch-dist.bat           <- Double-click to watch (EASIEST)
+watch-dist.ps1           <- PowerShell watch script
+sync-dist-now.ps1        <- One-time sync script
+BUNDLE-UPDATE.md         <- Detailed guide
+QUICK-START.txt          <- This file
+
+dist/                    <- Your distribution folder
+  BusinessManager.html   <- Auto-updated
+  server.js              <- Auto-updated
+  package.json           <- Auto-updated
+  BusinessManager.bat    <- User launcher
+  README.txt             <- User instructions
+
+================================================================================
+THAT'S IT! Now go create amazing stuff.
+
+Questions? See BUNDLE-UPDATE.md for detailed documentation.
+================================================================================

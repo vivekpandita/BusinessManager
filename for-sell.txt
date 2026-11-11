@@ -1,0 +1,37 @@
+**ZIP + BAT Distribution Model** is actually better suited to your current tech stack! Here's why and the pricing:
+
+**Why Current Stack Works Better for This:**
+- ✅ JSON files are fine (single user per installation)
+- ✅ No scaling/hosting costs
+- ✅ Users own their data locally
+- ✅ Works offline
+- ✅ Simple to update (just new ZIP)
+
+**Pricing for Downloadable Software:**
+
+| License Type | Price | Includes |
+|--------------|-------|----------|
+| **Basic** | ₹1,999 one-time | Core app, lifetime updates via email |
+| **Professional** | ₹3,999 one-time | Core app + 3 months priority email support |
+| **Annual Subscription** | ₹299/month | Always latest version + priority support |
+
+For India's small biz market, **₹1,999** is sweet spot—low barrier to entry, better than SaaS pricing for this segment.
+
+**What You Need to Fix First:**
+
+1. **Better installer BAT** — currently requires manual Node install
+   - Bundle Node.js inside ZIP (adds ~150MB)
+   - Or create a one-click installer EXE
+
+2. **Code protection** — users can see all your code in HTML
+   - Minify/obfuscate the HTML
+   - Or sell with license key validation
+
+3. **Licensing system** — optional but recommended
+   - Simple license key verification on startup
+   - Prevents casual sharing
+
+**Should You Upgrade Tech Stack?** 
+**No, not needed.** JSON files + Node.js is perfect for this model. Stay focused on packaging and distribution instead.
+
+Want me to help create a better installer BAT file or setup process?

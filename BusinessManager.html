@@ -53,6 +53,7 @@
             display: flex;
             border-bottom: 2px solid #e8e5f5;
             background: #f8f7fc;
+            flex-wrap: wrap;
         }
 
         .tab-button {
@@ -66,6 +67,7 @@
             color: #666;
             transition: all 0.3s ease;
             border-bottom: 3px solid transparent;
+            min-width: 120px;
         }
 
         .tab-button:hover {
@@ -137,6 +139,12 @@
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+        }
+
+        .form-row-5 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 15px;
         }
 
@@ -250,7 +258,7 @@
 
         .dashboard {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
             margin-bottom: 30px;
         }
@@ -590,15 +598,9 @@
         }
 
         @keyframes splashLoad {
-            0% {
-                width: 0%;
-            }
-            50% {
-                width: 100%;
-            }
-            100% {
-                width: 100%;
-            }
+            0% { width: 0%; }
+            50% { width: 100%; }
+            100% { width: 100%; }
         }
 
         .loading-overlay {
@@ -643,264 +645,72 @@
             background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
         }
 
-        body.dark-mode .container {
-            background: var(--bg-primary);
-        }
-
-        body.dark-mode .header {
-            background: linear-gradient(135deg, #2d2d2d 0%, #1e1e1e 100%);
-        }
-
-        body.dark-mode .tabs {
-            background: var(--bg-secondary);
-            border-bottom-color: var(--border-color);
-        }
-
-        body.dark-mode .tab-button {
-            color: var(--text-secondary);
-        }
-
-        body.dark-mode .tab-button.active {
-            color: #667eea;
-        }
-
-        body.dark-mode .content {
-            background: var(--bg-primary);
-        }
-
-        body.dark-mode .section {
-            background: var(--bg-secondary);
-            border-color: var(--border-color);
-        }
-
-        body.dark-mode .section-title {
-            color: var(--text-primary);
-        }
-
-        body.dark-mode .form-group label {
-            color: var(--text-primary);
-        }
-
+        body.dark-mode .container { background: var(--bg-primary); }
+        body.dark-mode .header { background: linear-gradient(135deg, #2d2d2d 0%, #1e1e1e 100%); }
+        body.dark-mode .tabs { background: var(--bg-secondary); border-bottom-color: var(--border-color); }
+        body.dark-mode .tab-button { color: var(--text-secondary); }
+        body.dark-mode .tab-button.active { color: #667eea; }
+        body.dark-mode .content { background: var(--bg-primary); }
+        body.dark-mode .section { background: var(--bg-secondary); border-color: var(--border-color); }
+        body.dark-mode .section-title { color: var(--text-primary); }
+        body.dark-mode .form-group label { color: var(--text-primary); }
+        
         body.dark-mode .form-group input,
-        body.dark-mode select {
-            background: var(--bg-tertiary);
-            color: var(--text-primary);
-            border-color: var(--border-color);
-        }
-
-        body.dark-mode table {
-            background: var(--card-bg);
-        }
-
-        body.dark-mode th {
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            border-color: var(--border-color);
-        }
-
-        body.dark-mode td {
-            color: var(--text-primary);
-            border-color: var(--border-color);
-        }
-
-        body.dark-mode tr:hover {
-            background: var(--bg-secondary);
-        }
-
-        body.dark-mode .card {
-            background: linear-gradient(135deg, #3a3a3a 0%, #2d2d2d 100%);
-            color: var(--text-primary);
-        }
-
-        body.dark-mode .card h3 {
-            color: var(--text-primary);
-        }
-
-        body.dark-mode .card .value {
-            color: var(--text-primary);
-        }
-
-        body.dark-mode .card.warning {
-            background: linear-gradient(135deg, #4a4520 0%, #5a5530 100%);
-            color: var(--text-primary);
-        }
-
-        body.dark-mode .card.warning h3 {
-            color: var(--text-primary);
-        }
-
-        body.dark-mode .card.warning .value {
-            color: var(--text-primary);
-        }
-
-        body.dark-mode .card.success {
-            background: linear-gradient(135deg, #2d5a2d 0%, #3d6a3d 100%);
-            color: var(--text-primary);
-        }
-
-        body.dark-mode .card.success h3,
-        body.dark-mode .card.success .value {
-            color: var(--text-primary);
-        }
-
-        body.dark-mode .badge-success {
-            background: #1f4620;
-            color: #51cf66;
-        }
-
-        body.dark-mode .badge-warning {
-            background: #4a4520;
-            color: #ffd43b;
-        }
-
-        body.dark-mode .badge-danger {
-            background: #5a2a2a;
-            color: #ff8787;
-        }
-
-        body.dark-mode .badge-primary {
-            background: #2a4a6a;
-            color: #74c0fc;
-        }
-
-        body.dark-mode .modal-content {
-            background: var(--bg-primary);
-            color: var(--text-primary);
-        }
-
-        body.dark-mode .modal-header {
-            color: var(--text-primary);
-            border-bottom-color: var(--border-color);
-        }
-
-        body.dark-mode #modalBody {
-            color: var(--text-primary);
-        }
-
-        body.dark-mode #modalBody p {
-            color: var(--text-primary);
-        }
-
-        body.dark-mode #modalBody h3,
-        body.dark-mode #modalBody h4 {
-            color: var(--text-primary);
-        }
-
-        body.dark-mode #modalBody > div {
-            background: var(--bg-secondary) !important;
-            border-color: var(--border-color) !important;
-        }
-
-        body.dark-mode #modalBody > div > p {
-            color: var(--text-primary);
-        }
-
-        body.dark-mode .order-item p {
-            color: var(--text-primary);
-        }
-
-        body.dark-mode .order-item p[style*="color: #666"] {
-            color: var(--text-secondary) !important;
-        }
-
-        body.dark-mode .toast {
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-        }
-
-        body.dark-mode p {
-            color: var(--text-primary);
-        }
-
-        body.dark-mode h4 {
-            color: var(--text-primary) !important;
-        }
-
-        body.dark-mode button {
-            color: inherit;
-        }
-
-        body.dark-mode .order-item {
-            color: var(--text-primary);
-        }
-
-        body.dark-mode .order-items {
-            color: var(--text-primary);
-        }
-
-        body.dark-mode #invoiceContent {
-            background: var(--bg-secondary) !important;
-            color: var(--text-primary) !important;
-        }
-
-        body.dark-mode .dropdown-list {
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-        }
-
-        body.dark-mode .form-group input {
-            background: var(--bg-tertiary);
-            color: var(--text-primary);
-            border-color: var(--border-color);
-        }
-
-        body.dark-mode .form-group label {
-            color: var(--text-primary);
-        }
+        body.dark-mode select { background: var(--bg-tertiary); color: var(--text-primary); border-color: var(--border-color); }
+        
+        body.dark-mode table { background: var(--card-bg); }
+        body.dark-mode th { background: var(--bg-secondary); color: var(--text-primary); border-color: var(--border-color); }
+        body.dark-mode td { color: var(--text-primary); border-color: var(--border-color); }
+        body.dark-mode tr:hover { background: var(--bg-secondary); }
+        body.dark-mode .card { background: linear-gradient(135deg, #3a3a3a 0%, #2d2d2d 100%); color: var(--text-primary); }
+        body.dark-mode .card h3 { color: var(--text-primary); }
+        body.dark-mode .card .value { color: var(--text-primary); }
+        body.dark-mode .card.warning { background: linear-gradient(135deg, #4a4520 0%, #5a5530 100%); color: var(--text-primary); }
+        body.dark-mode .card.warning h3 { color: var(--text-primary); }
+        body.dark-mode .card.warning .value { color: var(--text-primary); }
+        body.dark-mode .card.success { background: linear-gradient(135deg, #2d5a2d 0%, #3d6a3d 100%); color: var(--text-primary); }
+        body.dark-mode .card.success h3, body.dark-mode .card.success .value { color: var(--text-primary); }
+        
+        body.dark-mode .badge-success { background: #1f4620; color: #51cf66; }
+        body.dark-mode .badge-warning { background: #4a4520; color: #ffd43b; }
+        body.dark-mode .badge-danger { background: #5a2a2a; color: #ff8787; }
+        body.dark-mode .badge-primary { background: #2a4a6a; color: #74c0fc; }
+        
+        body.dark-mode .modal-content { background: var(--bg-primary); color: var(--text-primary); }
+        body.dark-mode .modal-header { color: var(--text-primary); border-bottom-color: var(--border-color); }
+        body.dark-mode #modalBody { color: var(--text-primary); }
+        body.dark-mode #modalBody p { color: var(--text-primary); }
+        body.dark-mode #modalBody h3, body.dark-mode #modalBody h4 { color: var(--text-primary); }
+        body.dark-mode #modalBody > div { background: var(--bg-secondary) !important; border-color: var(--border-color) !important; }
+        body.dark-mode #modalBody > div > p { color: var(--text-primary); }
+        
+        body.dark-mode .order-item p { color: var(--text-primary); }
+        body.dark-mode .order-item p[style*="color: #666"] { color: var(--text-secondary) !important; }
+        body.dark-mode .toast { background: var(--bg-secondary); color: var(--text-primary); }
+        body.dark-mode p { color: var(--text-primary); }
+        body.dark-mode h4 { color: var(--text-primary) !important; }
+        body.dark-mode button { color: inherit; }
+        body.dark-mode .order-item { color: var(--text-primary); }
+        body.dark-mode .order-items { color: var(--text-primary); }
+        body.dark-mode #invoiceContent { background: var(--bg-secondary) !important; color: var(--text-primary) !important; }
+        body.dark-mode .dropdown-list { background: var(--bg-secondary); color: var(--text-primary); }
 
         @keyframes slideIn {
-            from {
-                transform: translateX(400px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
+            from { transform: translateX(400px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
         }
 
-        .toast.success {
-            background: #d3f9d8;
-            color: #2f9e44;
-            border-left: 4px solid #2f9e44;
-        }
-
-        .toast.error {
-            background: #ffe0e0;
-            color: #c92a2a;
-            border-left: 4px solid #c92a2a;
-        }
-
-        .toast.info {
-            background: #d0ebff;
-            color: #1971c2;
-            border-left: 4px solid #1971c2;
-        }
+        .toast.success { background: #d3f9d8; color: #2f9e44; border-left: 4px solid #2f9e44; }
+        .toast.error { background: #ffe0e0; color: #c92a2a; border-left: 4px solid #c92a2a; }
+        .toast.info { background: #d0ebff; color: #1971c2; border-left: 4px solid #1971c2; }
 
         @media (max-width: 768px) {
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .tabs {
-                flex-wrap: wrap;
-            }
-
-            .tab-button {
-                flex: 1 1 50%;
-            }
-
-            .dashboard {
-                grid-template-columns: 1fr;
-            }
-
-            .header h1 {
-                font-size: 1.8em;
-            }
-
-            .toast {
-                min-width: 250px;
-            }
+            .form-row { grid-template-columns: 1fr; }
+            .form-row-5 { grid-template-columns: 1fr 1fr; }
+            .tab-button { flex: 1 1 33.33%; min-width: auto; }
+            .dashboard { grid-template-columns: 1fr; }
+            .header h1 { font-size: 1.8em; }
+            .toast { min-width: 250px; }
         }
     </style>
 </head>
@@ -948,6 +758,7 @@
             <button class="tab-button" onclick="switchTab('order-book')">Book Order</button>
             <button class="tab-button" onclick="switchTab('products')">Products</button>
             <button class="tab-button" onclick="switchTab('customers')">👥 Customers</button>
+            <button class="tab-button" onclick="switchTab('purchases')">🛒 Purchases</button>
             <button class="tab-button" onclick="switchTab('financial')">💰 Financial Summary</button>
         </div>
 
@@ -981,18 +792,22 @@
             <div id="products" class="tab-content">
                 <div class="section">
                     <h2 class="section-title">Add New Product</h2>
-                    <div class="form-row">
+                    <div class="form-row-5">
                         <div class="form-group">
                             <label>Product Name</label>
-                            <input type="text" id="productName" placeholder="e.g., Kashmiri Walnuts, Badam, Traditional Dress">
+                            <input type="text" id="productName" placeholder="e.g., Kashmiri Walnuts">
                         </div>
                         <div class="form-group">
-                            <label>Cost Price (₹)</label>
-                            <input type="number" id="productCost" placeholder="500">
+                            <label>Base Cost Price (₹)</label>
+                            <input type="number" id="productCost" placeholder="1100">
+                        </div>
+                        <div class="form-group">
+                            <label>Inbound Delivery (₹)</label>
+                            <input type="number" id="productInboundCost" placeholder="50" value="0">
                         </div>
                         <div class="form-group">
                             <label>Selling Price (₹)</label>
-                            <input type="number" id="productPrice" placeholder="750">
+                            <input type="number" id="productPrice" placeholder="1500">
                         </div>
                         <div class="form-group">
                             <label>Stock</label>
@@ -1011,7 +826,9 @@
                             <thead>
                                 <tr>
                                     <th>Product Name</th>
-                                    <th>Cost Price (₹)</th>
+                                    <th>Base CP (₹)</th>
+                                    <th>Inbound CP (₹)</th>
+                                    <th>Final CP (₹)</th>
                                     <th>Selling Price (₹)</th>
                                     <th>Margin %</th>
                                     <th>Stock</th>
@@ -1019,6 +836,49 @@
                                 </tr>
                             </thead>
                             <tbody id="productsList">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Purchases Tab -->
+            <div id="purchases" class="tab-content">
+                <div class="section">
+                    <h2 class="section-title">Log New Purchase</h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Supplier / Description</label>
+                            <input type="text" id="purchaseSupplier" placeholder="e.g., Walnut Supplier XYZ">
+                        </div>
+                        <div class="form-group">
+                            <label>Goods Value (₹)</label>
+                            <input type="number" id="purchaseGoodsValue" placeholder="10000" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Delivery / Freight Charge (₹)</label>
+                            <input type="number" id="purchaseDeliveryCharge" placeholder="1200" min="0">
+                        </div>
+                    </div>
+                    <button class="btn-primary" onclick="addPurchase()">Log Purchase</button>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">Purchase History</h2>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Supplier/Desc</th>
+                                    <th>Goods Value</th>
+                                    <th>Delivery Charge</th>
+                                    <th>Total Investment</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="purchasesList">
+                                <tr><td colspan="6" style="text-align: center; color: #999;">No purchases logged yet</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -1140,16 +1000,20 @@
                             <div class="value" id="totalRevenue">₹0</div>
                         </div>
                         <div class="card">
-                            <h3>Total Cost</h3>
+                            <h3>Product Cost (COGS)</h3>
                             <div class="value" id="totalCost">₹0</div>
                         </div>
                         <div class="card success">
-                            <h3>Total Profit</h3>
-                            <div class="value" id="totalProfit">₹0</div>
+                            <h3>Gross Profit</h3>
+                            <div class="value" id="grossProfit">₹0</div>
                         </div>
-                        <div class="card primary">
-                            <h3>Profit Margin</h3>
-                            <div class="value" id="profitMargin">0%</div>
+                        <div class="card warning">
+                            <h3>Delivery Expenses</h3>
+                            <div class="value" id="totalInboundDelivery">₹0</div>
+                        </div>
+                        <div class="card success" style="background: linear-gradient(135deg, #20c997 0%, #12b886 100%);">
+                            <h3>Net Profit</h3>
+                            <div class="value" id="netProfit">₹0</div>
                         </div>
                     </div>
                 </div>
@@ -1388,8 +1252,12 @@
                 <input type="text" id="editProductName" placeholder="Product name">
             </div>
             <div class="form-group">
-                <label>Cost Price (₹)</label>
+                <label>Base Cost Price (₹)</label>
                 <input type="number" id="editProductCost" placeholder="Cost price">
+            </div>
+            <div class="form-group">
+                <label>Inbound Delivery (₹)</label>
+                <input type="number" id="editProductInboundCost" placeholder="Inbound cost (e.g. 50)">
             </div>
             <div class="form-group">
                 <label>Selling Price (₹)</label>
@@ -1695,6 +1563,7 @@
                 <li>All products</li>
                 <li>All orders</li>
                 <li>All customers</li>
+                <li>All purchases</li>
                 <li>All settings (but not PIN)</li>
             </ul>
             <p style="margin-bottom: 15px; color: #666;">Enter the master PIN to confirm:</p>
@@ -1741,6 +1610,7 @@
         let orders = [];
         let customers = [];
         let allCustomers = [];
+        let purchases = [];
         let currentOrderItems = [];
         let currentFilter = 'open';
         let currentSearchQuery = '';
@@ -1767,6 +1637,7 @@
             await loadProducts();
             await loadOrders();
             await loadCustomers();
+            await loadPurchases();
             await updateDashboard();
             updateFeatureSections();
 
@@ -1841,6 +1712,7 @@
             if (tab === 'orders') loadOrders();
             if (tab === 'dashboard') updateDashboard();
             if (tab === 'products') loadProducts();
+            if (tab === 'purchases') loadPurchases();
             if (tab === 'order-book') populateProductSelect();
             if (tab === 'customers') loadCustomerHistoryDropdown();
             if (tab === 'financial') {
@@ -2063,8 +1935,10 @@
         // Customer Management
         async function loadCustomers() {
             try {
-                const response = await fetch(`${API_BASE}/customers`);
-                customers = await response.json();
+                const response = await fetch(`${API_BASE}/customers`).catch(() => ({ ok: false }));
+                if (response && response.ok) {
+                    customers = await response.json();
+                }
                 allCustomers = [...customers];
                 populateCustomerSelect();
                 await loadCustomersTable();
@@ -2174,17 +2048,19 @@
         // Product Management
         async function addProduct() {
             const name = document.getElementById('productName').value.trim();
-            const cost = parseFloat(document.getElementById('productCost').value);
+            const cost = parseFloat(document.getElementById('productCost').value) || 0;
+            const inboundCost = parseFloat(document.getElementById('productInboundCost').value) || 0;
             const price = parseFloat(document.getElementById('productPrice').value);
             const stock = parseInt(document.getElementById('productStock').value) || 0;
 
-            if (!name || !cost || !price) {
-                showToast('Please fill all fields', 'error');
+            if (!name || cost <= 0 || !price) {
+                showToast('Please fill product name, base cost, and selling price', 'error');
                 return;
             }
 
-            if (cost >= price) {
-                showToast('Selling price must be greater than cost price', 'error');
+            const finalCost = cost + inboundCost;
+            if (finalCost >= price) {
+                showToast('Selling price must be greater than final cost price (Base + Inbound)', 'error');
                 return;
             }
 
@@ -2192,7 +2068,7 @@
                 const response = await fetch(`${API_BASE}/products`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name, cost, price, stock })
+                    body: JSON.stringify({ name, cost, inboundCost, price, stock })
                 });
 
                 const result = await response.json();
@@ -2201,6 +2077,7 @@
 
                     document.getElementById('productName').value = '';
                     document.getElementById('productCost').value = '';
+                    document.getElementById('productInboundCost').value = '0';
                     document.getElementById('productPrice').value = '';
                     document.getElementById('productStock').value = '';
 
@@ -2213,41 +2090,51 @@
         }
 
         async function deleteProduct(id) {
-            showConfirmModal('Are you sure you want to delete this product?', async () => {
-                showLoadingOverlay();
-                try {
-                    const response = await fetch(`${API_BASE}/products/${id}`, { method: 'DELETE' });
-                    if (response.ok) {
-                        await loadProducts();
-                        await populateProductSelect();
-                        showToast('Product deleted successfully', 'success');
-                    } else {
-                        showToast('Failed to delete product', 'error');
-                    }
-                } catch (err) {
-                    showToast('Error deleting product: ' + err.message, 'error');
-                } finally {
-                    showLoadingOverlay(false);
+            try {
+                const response = await fetch(`${API_BASE}/products/${id}`, { method: 'DELETE' });
+                if (response.ok) {
+                    await loadProducts();
+                    await populateProductSelect();
+                    showToast('Product deleted successfully', 'success');
+                } else {
+                    showToast('Failed to delete product', 'error');
                 }
+            } catch (err) {
+                showToast('Error deleting product: ' + err.message, 'error');
+            }
+        }
+
+        function confirmDeleteProduct(id) {
+            showConfirmModal('Are you sure you want to delete this product? This will not affect existing orders.', async () => {
+                showLoadingOverlay();
+                await deleteProduct(id);
+                showLoadingOverlay(false);
             });
         }
 
         async function loadProducts() {
             try {
-                const response = await fetch(`${API_BASE}/products`);
-                products = await response.json();
+                const response = await fetch(`${API_BASE}/products`).catch(() => ({ ok: false }));
+                if (response && response.ok) {
+                    products = await response.json();
+                }
                 const tbody = document.getElementById('productsList');
                 tbody.innerHTML = '';
 
                 products.forEach(product => {
-                    const margin = (((product.price - product.cost) / product.price) * 100).toFixed(1);
+                    const baseCost = product.cost || 0;
+                    const inboundCost = product.inboundCost || 0;
+                    const finalCost = baseCost + inboundCost;
+                    const margin = product.price > 0 ? (((product.price - finalCost) / product.price) * 100).toFixed(1) : 0;
                     const stock = product.stock || 0;
                     const stockColor = stock > 10 ? '#2f9e44' : stock > 0 ? '#f59f00' : '#c92a2a';
                     tbody.innerHTML += `
                         <tr>
                             <td>${product.name}</td>
-                            <td>₹${product.cost.toFixed(2)}</td>
-                            <td>₹${product.price.toFixed(2)}</td>
+                            <td>₹${baseCost.toFixed(2)}</td>
+                            <td><span style="color: #666; font-size: 0.9em;">+ ₹${inboundCost.toFixed(2)}</span></td>
+                            <td style="font-weight: 600;">₹${finalCost.toFixed(2)}</td>
+                            <td style="font-weight: 600; color: #667eea;">₹${product.price.toFixed(2)}</td>
                             <td>${margin}%</td>
                             <td style="color: ${stockColor}; font-weight: 600;">
                                 ${stock}
@@ -2262,7 +2149,7 @@
                 });
 
                 if (products.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: #999;">No products added yet</td></tr>';
+                    tbody.innerHTML = '<tr><td colspan="8" style="text-align: center; color: #999;">No products added yet</td></tr>';
                 }
             } catch (err) {
                 console.error('Error loading products:', err);
@@ -2276,7 +2163,8 @@
             const modal = document.getElementById('editProductModal');
             document.getElementById('editProductId').value = id;
             document.getElementById('editProductName').value = product.name;
-            document.getElementById('editProductCost').value = product.cost;
+            document.getElementById('editProductCost').value = product.cost || 0;
+            document.getElementById('editProductInboundCost').value = product.inboundCost || 0;
             document.getElementById('editProductPrice').value = product.price;
             document.getElementById('editProductError').style.display = 'none';
             modal.classList.add('show');
@@ -2286,20 +2174,22 @@
         async function saveProductEdit() {
             const id = parseInt(document.getElementById('editProductId').value);
             const name = document.getElementById('editProductName').value.trim();
-            const cost = parseFloat(document.getElementById('editProductCost').value);
+            const cost = parseFloat(document.getElementById('editProductCost').value) || 0;
+            const inboundCost = parseFloat(document.getElementById('editProductInboundCost').value) || 0;
             const price = parseFloat(document.getElementById('editProductPrice').value);
             const errorEl = document.getElementById('editProductError');
 
             errorEl.style.display = 'none';
 
-            if (!name || !cost || !price) {
-                errorEl.textContent = 'Please fill all fields';
+            if (!name || cost <= 0 || !price) {
+                errorEl.textContent = 'Please fill product name, base cost, and selling price';
                 errorEl.style.display = 'block';
                 return;
             }
 
-            if (cost >= price) {
-                errorEl.textContent = 'Selling price must be greater than cost price';
+            const finalCost = cost + inboundCost;
+            if (finalCost >= price) {
+                errorEl.textContent = 'Selling price must be greater than final cost price (Base + Inbound)';
                 errorEl.style.display = 'block';
                 return;
             }
@@ -2308,7 +2198,7 @@
                 const response = await fetch(`${API_BASE}/products/${id}`, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name, cost, price })
+                    body: JSON.stringify({ name, cost, inboundCost, price })
                 });
 
                 const result = await response.json();
@@ -2328,24 +2218,6 @@
 
         function closeEditProductModal() {
             document.getElementById('editProductModal').classList.remove('show');
-        }
-
-        function confirmDeleteProduct(id) {
-            if (confirm('Are you sure you want to delete this product? This will not affect existing orders.')) {
-                deleteProduct(id);
-            }
-        }
-
-        async function deleteProduct(id) {
-            try {
-                const response = await fetch(`${API_BASE}/products/${id}`, { method: 'DELETE' });
-                if (response.ok) {
-                    await loadProducts();
-                    await populateProductSelect();
-                }
-            } catch (err) {
-                alert('Error deleting product: ' + err.message);
-            }
         }
 
         // Order Item Management
@@ -2389,6 +2261,9 @@
 
             const product = products.find(p => p.id === productId);
             if (!product) return;
+            
+            // The cost saved in the order item is the final landed cost (base + inbound)
+            const finalProductCost = (product.cost || 0) + (product.inboundCost || 0);
 
             // Check if we already have this product at the same price
             const existingItem = currentOrderItems.find(i => i.productId === productId && i.price === customPrice);
@@ -2398,7 +2273,7 @@
                 currentOrderItems.push({
                     productId: productId,
                     productName: product.name,
-                    cost: product.cost,
+                    cost: finalProductCost,
                     price: customPrice,
                     quantity: quantity
                 });
@@ -2539,8 +2414,10 @@
         // Order Management
         async function loadOrders() {
             try {
-                const response = await fetch(`${API_BASE}/orders`);
-                orders = await response.json();
+                const response = await fetch(`${API_BASE}/orders`).catch(() => ({ ok: false }));
+                if (response && response.ok) {
+                    orders = await response.json();
+                }
                 document.getElementById('orderSearch').value = '';
                 currentSearchQuery = '';
                 displayFilteredOrders();
@@ -2714,12 +2591,14 @@
             const customPrice = parseFloat(document.getElementById('editOrderItemPrice').value);
 
             if (!productId || !quantity || quantity <= 0 || isNaN(customPrice) || customPrice < 0) {
-                alert('Please select a product and enter a valid quantity and price');
+                showToast('Please select a product and enter a valid quantity and price', 'error');
                 return;
             }
 
             const product = products.find(p => p.id === productId);
             if (!product) return;
+            
+            const finalProductCost = (product.cost || 0) + (product.inboundCost || 0);
 
             const existingItem = editingOrderItems.find(i => i.productId === productId && i.price === customPrice);
             if (existingItem) {
@@ -2728,7 +2607,7 @@
                 editingOrderItems.push({
                     productId: productId,
                     productName: product.name,
-                    cost: product.cost,
+                    cost: finalProductCost,
                     price: customPrice,
                     quantity: quantity
                 });
@@ -2806,7 +2685,7 @@
             const additionalCharges = parseFloat(document.getElementById('editOrderAdditionalCharges').value) || 0;
 
             if (editingOrderItems.length === 0) {
-                alert('Please add at least one item to the order');
+                showToast('Please add at least one item to the order', 'error');
                 return;
             }
 
@@ -2838,11 +2717,12 @@
                     await viewOrderDetails(orderId);
                     await loadOrders();
                     await updateDashboard();
+                    showToast('Order updated successfully', 'success');
                 } else {
-                    alert('Failed to save order');
+                    showToast('Failed to save order', 'error');
                 }
             } catch (err) {
-                alert('Error: ' + err.message);
+                showToast('Error: ' + err.message, 'error');
             }
         }
 
@@ -2863,9 +2743,10 @@
                     await viewOrderDetails(orderId);
                     await loadOrders();
                     await updateDashboard();
+                    showToast('Delivery marked as done', 'success');
                 }
             } catch (err) {
-                alert('Error updating delivery: ' + err.message);
+                showToast('Error updating delivery: ' + err.message, 'error');
             }
         }
 
@@ -2886,9 +2767,10 @@
                     await viewOrderDetails(orderId);
                     await loadOrders();
                     await updateDashboard();
+                    showToast('Payment marked as done', 'success');
                 }
             } catch (err) {
-                alert('Error updating payment: ' + err.message);
+                showToast('Error updating payment: ' + err.message, 'error');
             }
         }
 
@@ -2986,8 +2868,8 @@
             });
         }
 
-        async function reopenOrder(orderId) {
-            if (confirm('Are you sure you want to reopen this order?')) {
+        function reopenOrder(orderId) {
+            showConfirmModal('Are you sure you want to reopen this order?', async () => {
                 try {
                     const response = await fetch(`${API_BASE}/orders/${orderId}`, {
                         method: 'PUT',
@@ -3004,11 +2886,12 @@
                         await viewOrderDetails(orderId);
                         await loadOrders();
                         await updateDashboard();
+                        showToast('Order reopened successfully', 'success');
                     }
                 } catch (err) {
-                    alert('Error: ' + err.message);
+                    showToast('Error: ' + err.message, 'error');
                 }
-            }
+            });
         }
 
         async function directCloseOrder(orderId) {
@@ -3071,8 +2954,11 @@
         // Dashboard
         async function updateDashboard() {
             try {
-                const response = await fetch(`${API_BASE}/orders`);
-                const allOrders = await response.json();
+                let allOrders = orders;
+                const response = await fetch(`${API_BASE}/orders`).catch(() => ({ ok: false }));
+                if (response && response.ok) {
+                    allOrders = await response.json();
+                }
 
                 // Exclude cancelled orders from counts
                 const activeOrders = allOrders.filter(o => o.status !== 'cancelled');
@@ -3084,13 +2970,22 @@
 
                 const totalRevenue = closedOrders.reduce((sum, o) => sum + o.total, 0);
                 const totalCost = closedOrders.reduce((sum, o) => sum + o.cost, 0);
-                const totalProfit = totalRevenue - totalCost;
-                const profitMargin = totalRevenue > 0 ? ((totalProfit / totalRevenue) * 100).toFixed(1) : 0;
+                const grossProfit = totalRevenue - totalCost;
+
+                // Ensure purchases are loaded for expense deduction
+                if (purchases.length === 0) await loadPurchases();
+                const totalInboundDelivery = purchases.reduce((sum, p) => sum + (p.deliveryCharge || 0), 0);
+                const netProfit = grossProfit - totalInboundDelivery;
 
                 document.getElementById('totalRevenue').textContent = '₹' + totalRevenue.toFixed(2);
                 document.getElementById('totalCost').textContent = '₹' + totalCost.toFixed(2);
-                document.getElementById('totalProfit').textContent = '₹' + totalProfit.toFixed(2);
-                document.getElementById('profitMargin').textContent = profitMargin + '%';
+                
+                if (document.getElementById('grossProfit')) {
+                    document.getElementById('grossProfit').textContent = '₹' + grossProfit.toFixed(2);
+                    document.getElementById('totalInboundDelivery').textContent = '₹' + totalInboundDelivery.toFixed(2);
+                    document.getElementById('netProfit').textContent = '₹' + netProfit.toFixed(2);
+                }
+                
                 document.getElementById('openOrders').textContent = openOrders.length;
                 document.getElementById('closedOrders').textContent = closedOrders.length;
                 document.getElementById('pendingDelivery').textContent = pendingDelivery.length;
@@ -3165,33 +3060,6 @@
                 }
             }
 
-            // Also populate the original monthly breakdown table if it exists
-            const tbody = document.getElementById('monthlyBreakdown');
-            if (tbody) {
-                tbody.innerHTML = '';
-
-                Object.keys(monthlyData).sort().reverse().forEach(monthKey => {
-                    const data = monthlyData[monthKey];
-                    const profit = data.revenue - data.cost;
-                    const margin = data.revenue > 0 ? ((profit / data.revenue) * 100).toFixed(1) : 0;
-
-                    tbody.innerHTML += `
-                        <tr>
-                            <td>${data.monthName}</td>
-                            <td>${data.orders}</td>
-                            <td>₹${data.revenue.toFixed(2)}</td>
-                            <td>₹${data.cost.toFixed(2)}</td>
-                            <td>₹${profit.toFixed(2)}</td>
-                            <td>${margin}%</td>
-                        </tr>
-                    `;
-                });
-
-                if (Object.keys(monthlyData).length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: #999;">No closed orders yet</td></tr>';
-                }
-            }
-
             return monthlyData;
         }
 
@@ -3244,18 +3112,6 @@
             if (monthlyRevenueCheckbox) monthlyRevenueCheckbox.checked = enabledFeatures.monthlyRevenue;
         }
 
-        function updateFeatureSections() {
-            const growthSection = document.getElementById('growthTrendsSection');
-            const perfSection = document.getElementById('productPerfSection');
-            const topSellingSection = document.getElementById('topSellingSection');
-            const monthlySection = document.getElementById('monthlyRevenueSection');
-
-            if (growthSection) growthSection.style.display = enabledFeatures.growthTrends ? 'block' : 'none';
-            if (perfSection) perfSection.style.display = enabledFeatures.productPerformance ? 'block' : 'none';
-            if (topSellingSection) topSellingSection.style.display = enabledFeatures.topSelling ? 'block' : 'none';
-            if (monthlySection) monthlySection.style.display = enabledFeatures.monthlyRevenue ? 'block' : 'none';
-        }
-
         function showFinancialSettingsModal() {
             updateFeatureCheckboxes();
             document.getElementById('financialSettingsModal').classList.add('show');
@@ -3264,6 +3120,113 @@
         function closeFinancialSettingsModal() {
             document.getElementById('financialSettingsModal').classList.remove('show');
             showToast('Settings saved', 'success');
+        }
+
+        // ===== PURCHASES MANAGEMENT =====
+        async function loadPurchases() {
+            try {
+                // If backend does not have this endpoint yet, this will gracefully fail 
+                // and we will use our local mocked array for demo purposes.
+                const response = await fetch(`${API_BASE}/purchases`).catch(() => ({ ok: false }));
+                if(response.ok) {
+                    purchases = await response.json();
+                }
+                
+                const tbody = document.getElementById('purchasesList');
+                if(!tbody) return;
+                tbody.innerHTML = '';
+                
+                if (purchases.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: #999;">No purchases logged yet</td></tr>';
+                    return;
+                }
+
+                purchases.sort((a,b) => new Date(b.date) - new Date(a.date)).forEach(p => {
+                    const total = (p.goodsValue || 0) + (p.deliveryCharge || 0);
+                    tbody.innerHTML += `
+                        <tr>
+                            <td>${new Date(p.date).toLocaleDateString()}</td>
+                            <td>${p.supplier}</td>
+                            <td>₹${(p.goodsValue || 0).toFixed(2)}</td>
+                            <td style="color: #c92a2a; font-weight: 600;">₹${(p.deliveryCharge || 0).toFixed(2)}</td>
+                            <td style="font-weight: 600; color: #667eea;">₹${total.toFixed(2)}</td>
+                            <td>
+                                <button class="btn-danger" onclick="deletePurchase(${p.id})">Delete</button>
+                            </td>
+                        </tr>
+                    `;
+                });
+            } catch(err) {
+                console.error('Error loading purchases:', err);
+            }
+        }
+
+        async function addPurchase() {
+            const supplier = document.getElementById('purchaseSupplier').value.trim();
+            const goodsValue = parseFloat(document.getElementById('purchaseGoodsValue').value) || 0;
+            const deliveryCharge = parseFloat(document.getElementById('purchaseDeliveryCharge').value) || 0;
+            
+            if(!supplier || goodsValue <= 0) {
+                showToast('Please enter a supplier name and valid goods value', 'error');
+                return;
+            }
+            
+            const purchaseData = {
+                supplier,
+                goodsValue,
+                deliveryCharge,
+                date: new Date().toISOString()
+            };
+            
+            try {
+                const response = await fetch(`${API_BASE}/purchases`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(purchaseData)
+                }).catch(() => ({ ok: false })); 
+                
+                if (response.ok) {
+                    await loadPurchases();
+                } else {
+                    // Local fallback if the backend API endpoint hasn't been set up yet
+                    purchaseData.id = Date.now();
+                    purchases.push(purchaseData);
+                    await loadPurchases();
+                }
+                
+                document.getElementById('purchaseSupplier').value = '';
+                document.getElementById('purchaseGoodsValue').value = '';
+                document.getElementById('purchaseDeliveryCharge').value = '';
+                showToast('Purchase logged successfully', 'success');
+                updateDashboard(); // Refreshes financial stats!
+            } catch(e) {
+                showToast('Error saving purchase', 'error');
+            }
+        }
+
+        async function deletePurchase(id) {
+            showConfirmModal('Delete this purchase record?', async () => {
+                showLoadingOverlay();
+                try {
+                    const response = await fetch(`${API_BASE}/purchases/${id}`, {
+                        method: 'DELETE'
+                    }).catch(() => ({ ok: false }));
+                    
+                    if(response.ok) {
+                        await loadPurchases();
+                    } else {
+                        // Local fallback if no backend API
+                        purchases = purchases.filter(p => p.id !== id);
+                        await loadPurchases();
+                    }
+                    updateDashboard();
+                    showToast('Purchase deleted', 'success');
+                } catch(e) {
+                    showToast('Error deleting purchase', 'error');
+                } finally {
+                    showLoadingOverlay(false);
+                }
+            });
         }
 
         // ===== STOCK MANAGEMENT =====
@@ -3372,10 +3335,13 @@
 
         async function loadCustomersTable() {
             try {
-                const response = await fetch(`${API_BASE}/customers`);
-                const customers = await response.json();
-                allCustomers = [...customers];
-                displayCustomersTable(customers);
+                const response = await fetch(`${API_BASE}/customers`).catch(() => ({ ok: false }));
+                let currentCustomers = customers;
+                if (response && response.ok) {
+                    currentCustomers = await response.json();
+                }
+                allCustomers = [...currentCustomers];
+                displayCustomersTable(currentCustomers);
             } catch (err) {
                 console.error('Error loading customers:', err);
             }
@@ -3444,12 +3410,6 @@
         }
 
         // ===== ANALYTICS =====
-        function loadAnalytics() {
-            if (document.querySelector('.tab-content.active')?.id === 'analytics') {
-                loadCustomerHistoryDropdown();
-            }
-        }
-
         function loadTopProducts() {
             const productSales = {};
 
@@ -3496,8 +3456,7 @@
 
         function loadMonthlyRevenue() {
             const monthlyData = {};
-            const now = new Date();
-
+            
             orders.filter(o => o.deliveryDone && o.paymentDone).forEach(order => {
                 const date = new Date(order.createdAt);
                 const monthKey = date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0');
@@ -3521,7 +3480,7 @@
 
             months.forEach(month => {
                 const revenue = monthlyData[month];
-                const height = (revenue / maxRevenue) * chartHeight;
+                const height = maxRevenue > 0 ? (revenue / maxRevenue) * chartHeight : 0;
                 const [year, monthNum] = month.split('-');
                 const monthName = new Date(year, monthNum - 1).toLocaleDateString('en', { month: 'short', year: '2-digit' });
 
@@ -3966,9 +3925,9 @@ Please share this invoice for your records.\n`;
         function copyInvoiceToClipboard() {
             const invoiceText = document.getElementById('invoiceContent').textContent;
             navigator.clipboard.writeText(invoiceText).then(() => {
-                alert('Invoice copied to clipboard!');
+                showToast('Invoice copied to clipboard!', 'success');
             }).catch(err => {
-                alert('Failed to copy invoice');
+                showToast('Failed to copy invoice', 'error');
             });
         }
 
@@ -4222,7 +4181,7 @@ Please share this invoice for your records.\n`;
                     pinSkipped = false;
                     pinVerified = true;
                     closePinSettingsModal();
-                    alert('PIN set successfully!');
+                    showToast('PIN set successfully!', 'success');
                     showPinSettingsModal(); // Refresh the modal
                 } else {
                     errorEl.textContent = result.error || 'Failed to set PIN';
@@ -4259,7 +4218,7 @@ Please share this invoice for your records.\n`;
                     pinSkipped = true;
                     pinVerified = false;
                     closePinSettingsModal();
-                    alert('PIN protection removed!');
+                    showToast('PIN protection removed!', 'success');
                 } else {
                     errorEl.textContent = result.error || 'Invalid PIN';
                     errorEl.style.display = 'block';

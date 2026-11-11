@@ -2010,17 +2010,25 @@
         });
 
         async function saveOrUpdateCustomer(name, phone, address) {
-            const existingCustomer = customers.find(c => c.phone === phone);
+            // Trim and normalize inputs for robust comparison
+            const trimmedPhone = String(phone || '').trim();
+            const trimmedName = String(name || '').trim().toLowerCase();
+
+            // Match existing customer strictly by phone or normalized name
+            const existingCustomer = customers.find(c => 
+                (trimmedPhone && String(c.phone || '').trim() === trimmedPhone) &&
+                (trimmedName && String(c.name || '').trim().toLowerCase() === trimmedName)
+            );
 
             if (existingCustomer) {
                 try {
                     const response = await fetch(`${API_BASE}/customers/${existingCustomer.id}`, {
                         method: 'PUT',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ name, phone, address })
+                        body: JSON.stringify({ name: name.trim(), phone: trimmedPhone, address: address.trim() })
                     });
                     const result = await response.json();
-                    return result.customer;
+                    return result.customer || existingCustomer;
                 } catch (err) {
                     console.error('Error updating customer:', err);
                     return existingCustomer;
@@ -2030,11 +2038,15 @@
                     const response = await fetch(`${API_BASE}/customers`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ name, phone, address })
+                        body: JSON.stringify({ name: name.trim(), phone: trimmedPhone, address: address.trim() })
                     });
                     const result = await response.json();
-                    if (result.success) {
-                        customers.push(result.customer);
+                    if (result.success && result.customer) {
+                        // Prevent duplicate entries in local arrays
+                        if (!customers.some(c => c.id === result.customer.id)) {
+                            customers.push(result.customer);
+                        }
+                        allCustomers = [...customers];
                         populateCustomerSelect();
                         return result.customer;
                     }

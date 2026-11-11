@@ -325,6 +325,57 @@ app.delete('/api/orders/:id', (req, res) => {
     }
 });
 
+
+// PURCHASES API
+app.get('/api/purchases', (req, res) => {
+    const purchases = readFile('purchases.json') || [];
+    res.json(purchases);
+});
+
+app.post('/api/purchases', (req, res) => {
+    const purchases = readFile('purchases.json') || [];
+    const { supplier, goodsValue, deliveryCharge, date } = req.body;
+    
+    if (!supplier || goodsValue === undefined) {
+        return res.status(400).json({ success: false, error: 'Supplier and goods value are required' });
+    }
+
+    const newPurchase = {
+        id: purchases.length > 0 ? Math.max(...purchases.map(p => Number(p.id) || 0)) + 1 : 1,
+        supplier: String(supplier).trim(),
+        goodsValue: parseFloat(goodsValue) || 0,
+        deliveryCharge: parseFloat(deliveryCharge) || 0,
+        date: date || new Date().toISOString()
+    };
+
+    purchases.push(newPurchase);
+    if (writeFile('purchases.json', purchases)) {
+        res.json({ success: true, purchase: newPurchase });
+    } else {
+        res.status(500).json({ success: false, error: 'Failed to save purchase' });
+    }
+});
+
+
+app.delete('/api/purchases/:id', (req, res) => {
+    let purchases = readFile('purchases.json') || [];
+    const purchaseId = parseInt(req.params.id);
+    
+    const initialLength = purchases.length;
+    purchases = purchases.filter(p => p.id !== purchaseId);
+
+    if (purchases.length === initialLength) {
+        return res.status(404).json({ success: false, error: 'Purchase not found' });
+    }
+
+    if (writeFile('purchases.json', purchases)) {
+        res.json({ success: true });
+    } else {
+        res.status(500).json({ success: false, error: 'Failed to delete purchase' });
+    }
+});
+
+
 // RESET ALL DATA
 app.post('/api/reset-all', (req, res) => {
     const { masterPin } = req.body;
@@ -339,6 +390,7 @@ app.post('/api/reset-all', (req, res) => {
         writeFile('products.json', []);
         writeFile('orders.json', []);
         writeFile('customers.json', []);
+        writeFile('purchases.json', []);
         writeFile('settings.json', {});  // Completely empty - fresh start
         writeFile('counter.json', { orderCounter: 1000 });
 

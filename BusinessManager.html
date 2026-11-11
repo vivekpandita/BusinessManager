@@ -1269,19 +1269,24 @@
                     </div>
 
                     <h3 style="margin-top: 25px; margin-bottom: 15px;">Add Items to Order</h3>
-                    <div class="form-row">
-                        <div class="form-group">
+                    
+                    <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                        <div class="form-group" style="margin: 0;">
                             <label>Select Product</label>
-                            <select id="productSelect" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                            <select id="productSelect" onchange="updateDefaultPrice()" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
                                 <option value="">-- Choose Product --</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label>Quantity</label>
-                            <input type="number" id="orderQuantity" min="0.01" step="0.01" value="1">
+                        <div class="form-group" style="margin: 0;">
+                            <label>Unit Price (₹)</label>
+                            <input type="number" id="orderItemPrice" min="0" step="0.01" placeholder="Selling Price" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; background: white;">
                         </div>
-                        <div class="form-group" style="display: flex; align-items: flex-end;">
-                            <button class="btn-primary" onclick="addOrderItem()" style="width: 100%;">Add Item</button>
+                        <div class="form-group" style="margin: 0;">
+                            <label>Quantity</label>
+                            <input type="number" id="orderQuantity" min="0.01" step="0.01" value="1" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                        </div>
+                        <div class="form-group" style="margin: 0; display: flex; align-items: flex-end;">
+                            <button class="btn-primary" onclick="addOrderItem()" style="width: 100%; padding: 10px;">Add Item</button>
                         </div>
                     </div>
 
@@ -1328,16 +1333,20 @@
             <div id="editOrderItemsList" style="margin-bottom: 20px; border: 1px solid #e8e5f5; border-radius: 8px; overflow: hidden;"></div>
 
             <h4 style="margin: 25px 0 15px 0; font-weight: 600; color: #333;">Add New Item</h4>
-            <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 10px; padding: 15px; background: #f8f7fc; border-radius: 8px;">
+            <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 10px; padding: 15px; background: #f8f7fc; border-radius: 8px;">
                 <div class="form-group" style="margin: 0;">
                     <label style="font-size: 0.9em;">Product</label>
-                    <select id="editOrderProductSelect" style="width: 100%; padding: 8px 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 0.9em;">
+                    <select id="editOrderProductSelect" onchange="updateEditDefaultPrice()" style="width: 100%; padding: 8px 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 0.9em;">
                         <option value="">-- Choose --</option>
                     </select>
                 </div>
                 <div class="form-group" style="margin: 0;">
+                    <label style="font-size: 0.9em;">Price (₹)</label>
+                    <input type="number" id="editOrderItemPrice" min="0" step="0.01" style="width: 100%; padding: 8px 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 0.9em; background: white;">
+                </div>
+                <div class="form-group" style="margin: 0;">
                     <label style="font-size: 0.9em;">Qty</label>
-                    <input type="number" id="editOrderQuantity" min="0.01" step="0.01" value="1" style="padding: 8px 10px; font-size: 0.9em;">
+                    <input type="number" id="editOrderQuantity" min="0.01" step="0.01" value="1" style="width: 100%; padding: 8px 10px; font-size: 0.9em;">
                 </div>
                 <div style="display: flex; align-items: flex-end;">
                     <button class="btn-primary" onclick="addItemToEditOrder()" style="width: 100%; padding: 8px; font-size: 0.9em;">Add</button>
@@ -2346,19 +2355,34 @@
             products.forEach(product => {
                 select.innerHTML += `<option value="${product.id}">${product.name} (₹${product.price})</option>`;
             });
+            document.getElementById('orderItemPrice').value = '';
+        }
+        
+        function updateDefaultPrice() {
+            const productId = parseInt(document.getElementById('productSelect').value);
+            if (!productId) {
+                document.getElementById('orderItemPrice').value = '';
+                return;
+            }
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                document.getElementById('orderItemPrice').value = product.price;
+            }
         }
 
         function addOrderItem() {
             const productId = parseInt(document.getElementById('productSelect').value);
             const quantity = parseFloat(document.getElementById('orderQuantity').value);
+            const customPrice = parseFloat(document.getElementById('orderItemPrice').value);
+            
             const errorEl = document.getElementById('orderError');
             const successEl = document.getElementById('orderSuccess');
 
             errorEl.style.display = 'none';
             successEl.style.display = 'none';
 
-            if (!productId || !quantity || quantity <= 0) {
-                errorEl.textContent = 'Please select a product and enter valid quantity';
+            if (!productId || !quantity || quantity <= 0 || isNaN(customPrice) || customPrice < 0) {
+                errorEl.textContent = 'Please select a product and enter a valid quantity and price';
                 errorEl.style.display = 'block';
                 return;
             }
@@ -2366,15 +2390,22 @@
             const product = products.find(p => p.id === productId);
             if (!product) return;
 
-            currentOrderItems.push({
-                productId: productId,
-                productName: product.name,
-                cost: product.cost,
-                price: product.price,
-                quantity: quantity
-            });
+            // Check if we already have this product at the same price
+            const existingItem = currentOrderItems.find(i => i.productId === productId && i.price === customPrice);
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                currentOrderItems.push({
+                    productId: productId,
+                    productName: product.name,
+                    cost: product.cost,
+                    price: customPrice,
+                    quantity: quantity
+                });
+            }
 
             document.getElementById('productSelect').value = '';
+            document.getElementById('orderItemPrice').value = '';
             document.getElementById('orderQuantity').value = '1';
             renderOrderItems();
         }
@@ -2404,7 +2435,7 @@
                     <div class="order-item">
                         <div class="item-details">
                             <p>${item.productName}</p>
-                            <p style="font-size: 0.9em; color: #666;">Qty: ${item.quantity} × ₹${item.price}</p>
+                            <p style="font-size: 0.9em; color: #666;">Qty: ${item.quantity} × ₹${item.price.toFixed(2)}</p>
                         </div>
                         <div>
                             <span class="item-price">₹${itemTotal.toFixed(2)}</span>
@@ -2499,6 +2530,7 @@
             document.getElementById('customerPhone').value = '';
             document.getElementById('customerAddress').value = '';
             document.getElementById('productSelect').value = '';
+            document.getElementById('orderItemPrice').value = '';
             document.getElementById('orderQuantity').value = '1';
             currentOrderItems = [];
             renderOrderItems();
@@ -2545,7 +2577,7 @@
                 <div class="order-item">
                     <div class="item-details">
                         <p>${item.productName}</p>
-                        <p style="font-size: 0.9em; color: #666;">Qty: ${item.quantity} × ₹${item.price}</p>
+                        <p style="font-size: 0.9em; color: #666;">Qty: ${item.quantity} × ₹${item.price.toFixed(2)}</p>
                     </div>
                     <span class="item-price">₹${(item.price * item.quantity).toFixed(2)}</span>
                 </div>
@@ -2661,21 +2693,35 @@
             products.forEach(product => {
                 select.innerHTML += `<option value="${product.id}">${product.name} (₹${product.price})</option>`;
             });
+            document.getElementById('editOrderItemPrice').value = '';
+        }
+
+        function updateEditDefaultPrice() {
+            const productId = parseInt(document.getElementById('editOrderProductSelect').value);
+            if (!productId) {
+                document.getElementById('editOrderItemPrice').value = '';
+                return;
+            }
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                document.getElementById('editOrderItemPrice').value = product.price;
+            }
         }
 
         function addItemToEditOrder() {
             const productId = parseInt(document.getElementById('editOrderProductSelect').value);
             const quantity = parseFloat(document.getElementById('editOrderQuantity').value);
+            const customPrice = parseFloat(document.getElementById('editOrderItemPrice').value);
 
-            if (!productId || !quantity || quantity <= 0) {
-                alert('Please select a product and enter valid quantity');
+            if (!productId || !quantity || quantity <= 0 || isNaN(customPrice) || customPrice < 0) {
+                alert('Please select a product and enter a valid quantity and price');
                 return;
             }
 
             const product = products.find(p => p.id === productId);
             if (!product) return;
 
-            const existingItem = editingOrderItems.find(i => i.productId === productId);
+            const existingItem = editingOrderItems.find(i => i.productId === productId && i.price === customPrice);
             if (existingItem) {
                 existingItem.quantity += quantity;
             } else {
@@ -2683,19 +2729,28 @@
                     productId: productId,
                     productName: product.name,
                     cost: product.cost,
-                    price: product.price,
+                    price: customPrice,
                     quantity: quantity
                 });
             }
 
             document.getElementById('editOrderProductSelect').value = '';
+            document.getElementById('editOrderItemPrice').value = '';
             document.getElementById('editOrderQuantity').value = '1';
             renderEditOrderItems();
         }
 
-        function removeEditOrderItem(productId) {
-            editingOrderItems = editingOrderItems.filter(i => i.productId !== productId);
+        function removeEditOrderItem(index) {
+            editingOrderItems.splice(index, 1);
             renderEditOrderItems();
+        }
+        
+        function updateEditItemPrice(index, newPrice) {
+            const price = parseFloat(newPrice);
+            if (price >= 0) {
+                editingOrderItems[index].price = price;
+                renderEditOrderItems();
+            }
         }
 
         function renderEditOrderItems() {
@@ -2713,7 +2768,11 @@
                         <div style="padding: 15px; border-bottom: 1px solid #e8e5f5; display: flex; justify-content: space-between; align-items: center;">
                             <div style="flex: 1;">
                                 <p style="margin: 0 0 8px 0; font-weight: 500; color: #333;">${item.productName}</p>
-                                <p style="margin: 0; font-size: 0.9em; color: #666;">₹${item.price} per unit</p>
+                                <div style="display: flex; align-items: center; gap: 5px; margin-top: 5px;">
+                                    <label style="font-size: 0.85em; color: #666; margin: 0;">₹</label>
+                                    <input type="number" value="${item.price}" min="0" step="0.01" style="width: 80px; padding: 4px 8px; border: 1px solid #ddd; border-radius: 5px; font-size: 0.9em;" onchange="updateEditItemPrice(${index}, this.value)">
+                                    <span style="font-size: 0.85em; color: #666;">/ unit</span>
+                                </div>
                             </div>
                             <div style="display: flex; align-items: center; gap: 10px;">
                                 <div style="display: flex; align-items: center; gap: 5px;">
@@ -2721,7 +2780,7 @@
                                     <input type="number" value="${item.quantity}" min="0.01" step="0.01" style="width: 60px; padding: 6px 8px; border: 1px solid #ddd; border-radius: 5px; text-align: center;" onchange="updateEditItemQuantity(${index}, this.value)">
                                 </div>
                                 <span style="font-weight: 600; min-width: 80px; text-align: right;">₹${itemTotal.toFixed(2)}</span>
-                                <button class="btn-danger" onclick="removeEditOrderItem(${item.productId})" style="padding: 5px 10px; font-size: 0.85em;">Remove</button>
+                                <button class="btn-danger" onclick="removeEditOrderItem(${index})" style="padding: 5px 10px; font-size: 0.85em;">Remove</button>
                             </div>
                         </div>
                     `;

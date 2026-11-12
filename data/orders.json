@@ -268,7 +268,7 @@
     "cost": 840,
     "profit": 410,
     "deliveryDone": true,
-    "paymentDone": false,
+    "paymentDone": true,
     "createdAt": "2026-11-11T05:21:18.155Z"
   },
   {
@@ -351,15 +351,15 @@
         "productId": 1794373907731,
         "productName": "kesar 1 gm",
         "cost": 290,
-        "price": 500,
+        "price": 400,
         "quantity": 1
       }
     ],
-    "subtotal": 1900,
+    "subtotal": 1800,
     "additionalCharges": 0,
-    "total": 1900,
+    "total": 1800,
     "cost": 1190,
-    "profit": 710,
+    "profit": 610,
     "deliveryDone": false,
     "paymentDone": false,
     "createdAt": "2026-11-11T05:23:17.656Z"
@@ -375,15 +375,15 @@
         "productId": 1794373907731,
         "productName": "kesar 1 gm",
         "cost": 290,
-        "price": 500,
+        "price": 600,
         "quantity": 1
       }
     ],
-    "subtotal": 500,
+    "subtotal": 600,
     "additionalCharges": 0,
-    "total": 500,
+    "total": 600,
     "cost": 290,
-    "profit": 210,
+    "profit": 310,
     "deliveryDone": true,
     "paymentDone": true,
     "createdAt": "2026-11-11T05:23:50.520Z"

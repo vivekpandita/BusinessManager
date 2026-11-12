@@ -2513,6 +2513,7 @@
                 </div>
             `;
 
+
             if (order.status !== 'cancelled') {
                 modalHtml += `<div class="button-group" style="margin-top: 20px;">
                     ${!order.deliveryDone ? `<button class="btn-success" onclick="markDelivery(${order.id})">Mark Delivery Done</button>` : ''}
@@ -2525,6 +2526,9 @@
             modalHtml += `<div style="margin-top: 15px;">
                 <button class="btn-secondary" onclick="toggleMoreActions(${order.id})" style="width: 100%;">More Actions ▼</button>
                 <div id="moreActions_${order.id}" style="display: none; margin-top: 10px;">`;
+
+            modalHtml += `<button class="btn-primary" onclick="reprintInvoice(${order.id})" style="width: 100%; margin-bottom: 8px; background-color: #667eea; color: white;">📄 View/Copy Invoice</button>`;
+
 
             if (order.status === 'cancelled') {
                 modalHtml += `<button class="btn-success" onclick="reopenOrder(${order.id})" style="width: 100%; margin-bottom: 8px;">↶ Reopen Order</button>`;
@@ -3880,6 +3884,13 @@
             }
         }
 
+        function reprintInvoice(orderId) {
+            const order = orders.find(o => o.id === orderId);
+            if (order) {
+                generateAndShowInvoice(order);
+            }
+        }
+
         // Invoice Generation
         function generateInvoiceText(order) {
             const line = '─'.repeat(50);
@@ -3918,7 +3929,7 @@ Address: ${order.customerAddress}\n`;
             invoiceText += `${line}\n\n`;
 
             invoiceText += `Thank you for your order!
-Please share this invoice for your records.\n`;
+\n`;
             invoiceText += `${line}\n`;
 
             return invoiceText;

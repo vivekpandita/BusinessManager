@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "id": 1,
+    "supplier": "10 kg supply",
+    "goodsValue": 9325,
+    "deliveryCharge": 1200,
+    "date": "2026-11-11T12:41:58.399Z"
+  }
+]

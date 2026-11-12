@@ -9,5 +9,6 @@
     "topSelling": true,
     "monthlyRevenue": true
   },
-  "setupModalDismissed": true
+  "setupModalDismissed": true,
+  "darkMode": false
 }
